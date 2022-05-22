@@ -21,25 +21,15 @@ import java.util.ArrayList;
 public class FileMgmt implements FileInterface {
     ArrayList<String> readUserInfo = new ArrayList();
     ArrayList<String> readAdminInfo = new ArrayList();
+    ArrayList<String> readConstructionInfo = new ArrayList();
+    ArrayList<String> readColorInfo = new ArrayList();
     ArrayList<UserInfo> userInfo = new ArrayList<>();
     ArrayList<AdminInfo> adminInfo = new ArrayList<>();
+    ArrayList<ConstructionInfo> constructionInfo = new ArrayList<>();
+    ArrayList<ColorInfo> colorInfo = new ArrayList();
     
     @Override
     public void readFileData(String path) {
-        try {
-            BufferedReader bfReader = new BufferedReader(new FileReader(new File(path)));
-            String line = "";
-            while ((line = bfReader.readLine()) != null) {
-                readUserInfo.add(line);
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("파일이 존재하지않습니다. 경로를 확인해주세요");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public void readCsrFileData(String path) {
         try {
             BufferedReader bfReader = new BufferedReader(new FileReader(new File(path)));
             String line = "";
@@ -67,21 +57,37 @@ public class FileMgmt implements FileInterface {
             e.printStackTrace();
         }
     }
+    public void readConstructionFileData(String path) {
+        try {
+            BufferedReader bfReader = new BufferedReader(new FileReader(new File(path)));
+            String line = "";
+            while ((line = bfReader.readLine()) != null) {
+                readConstructionInfo.add(line);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("파일이 존재하지않습니다. 경로를 확인해주세요");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void readColorFileData(String path) {
+        try {
+            BufferedReader bfReader = new BufferedReader(new FileReader(new File(path)));
+            String line = "";
+            while ((line = bfReader.readLine()) != null) {
+                readColorInfo.add(line);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("파일이 존재하지않습니다. 경로를 확인해주세요");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
     @Override
     public void writeFileData(String path, String data) throws IOException {
-        PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(path,true)),true);
-        pw.write(data+"\n");
-        pw.flush();
-        pw.close();
-    }
-    public void writeCsrFileData(String path, String data) throws IOException {
-        PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(path,true)),true);
-        pw.write(data+"\n");
-        pw.flush();
-        pw.close();
-    }
-    public void writeManagerFileData(String path, String data) throws IOException {
         PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(path,true)),true);
         pw.write(data+"\n");
         pw.flush();
@@ -107,6 +113,24 @@ public class FileMgmt implements FileInterface {
             adminInfo.add(new AdminInfo(str[0],str[1]));
         }
     }
+    public void splitConstructionFileData() {
+        String line;
+
+        for (int i = 0; i < readConstructionInfo.size(); i++) {
+            line = readConstructionInfo.get(i);
+            String[] str = line.split("\t");
+            constructionInfo.add(new ConstructionInfo(str[0],str[1]));
+        }
+    }
+    public void splitColorFileData() {
+        String line;
+
+        for (int i = 0; i < readColorInfo.size(); i++) {
+            line = readColorInfo.get(i);
+            String[] str = line.split("\t");
+            colorInfo.add(new ColorInfo(str[0],str[1],str[2]));
+        }
+    }
 
     
     public ArrayList<UserInfo> returnUserInfo() throws IOException {
@@ -117,5 +141,11 @@ public class FileMgmt implements FileInterface {
     }
     public ArrayList<AdminInfo> returnManagerInfo() throws IOException {
         return adminInfo;
+    }
+    public ArrayList<ConstructionInfo> returnConstructionInfo() throws IOException {
+        return constructionInfo;
+    }
+    public ArrayList<ColorInfo> returnColorInfo() throws IOException {
+        return colorInfo;
     }
 }
