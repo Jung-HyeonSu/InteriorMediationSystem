@@ -19,7 +19,7 @@ public class Housing extends HousingType{
     WindowBehavior = new WindowChangeable();
     };
 
-    public void display() {
-        System.out.println("선택하신 유형은 주택입니다.");
+    public String display() {
+        return "Housing";
     };
 }

@@ -17,7 +17,7 @@ public abstract class HousingType {
     protected double Height;
     protected double AFlatNumber;
     
-    public abstract void display();
+    public abstract String display();
     
     public void PerformWall(){
         WallBehavior.WallConstruction();

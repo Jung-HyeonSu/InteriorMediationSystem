@@ -1,5 +1,12 @@
 package deu.cse.team.strategy;
 
+import deu.cse.team.source.FileMgmt;
+import deu.cse.team.source.HousingTypeInfo;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /*
@@ -29,10 +36,78 @@ public class HousingTypeGui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel5 = new javax.swing.JLabel();
+        jTextFieldtype = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jComboBoxWallBh = new javax.swing.JComboBox<>();
+        jComboBoxFloorBh = new javax.swing.JComboBox<>();
+        jComboBoxCeilingBh = new javax.swing.JComboBox<>();
+        jComboBoxWindowBh = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        jTextFieldtype1 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jComboBoxWallBh1 = new javax.swing.JComboBox<>();
+        jComboBoxFloorBh1 = new javax.swing.JComboBox<>();
+        jComboBoxCeilingBh1 = new javax.swing.JComboBox<>();
+        jComboBoxWindowBh1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jComboBoxType = new javax.swing.JComboBox<>();
         jButtonOk = new javax.swing.JButton();
         jButtonCancel = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jComboBoxWallBh2 = new javax.swing.JComboBox<>();
+        jComboBoxFloorBh2 = new javax.swing.JComboBox<>();
+        jComboBoxCeilingBh2 = new javax.swing.JComboBox<>();
+        jComboBoxWindowBh2 = new javax.swing.JComboBox<>();
+
+        jLabel5.setText("주택유형");
+
+        jTextFieldtype.setEnabled(false);
+
+        jLabel4.setText("창문");
+
+        jLabel2.setText("벽");
+
+        jLabel3.setText("바닥");
+
+        jLabel6.setText("천장");
+
+        jComboBoxWallBh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "가능", "불가능" }));
+
+        jComboBoxFloorBh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "가능", "불가능" }));
+
+        jComboBoxCeilingBh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "가능", "불가능" }));
+
+        jComboBoxWindowBh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "가능", "불가능" }));
+
+        jLabel7.setText("주택유형");
+
+        jTextFieldtype1.setEnabled(false);
+
+        jLabel8.setText("창문");
+
+        jLabel9.setText("벽");
+
+        jLabel10.setText("바닥");
+
+        jLabel11.setText("천장");
+
+        jComboBoxWallBh1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "가능", "불가능" }));
+
+        jComboBoxFloorBh1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "가능", "불가능" }));
+
+        jComboBoxCeilingBh1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "가능", "불가능" }));
+
+        jComboBoxWindowBh1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "가능", "불가능" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,74 +134,214 @@ public class HousingTypeGui extends javax.swing.JFrame {
             }
         });
 
+        jLabel13.setText("창문");
+
+        jLabel14.setText("벽");
+
+        jLabel15.setText("바닥");
+
+        jLabel16.setText("천장");
+
+        jComboBoxWallBh2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "가능", "불가능" }));
+        jComboBoxWallBh2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxWallBh2ActionPerformed(evt);
+            }
+        });
+
+        jComboBoxFloorBh2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "가능", "불가능" }));
+        jComboBoxFloorBh2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxFloorBh2ActionPerformed(evt);
+            }
+        });
+
+        jComboBoxCeilingBh2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "가능", "불가능" }));
+        jComboBoxCeilingBh2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxCeilingBh2ActionPerformed(evt);
+            }
+        });
+
+        jComboBoxWindowBh2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "가능", "불가능" }));
+        jComboBoxWindowBh2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxWindowBh2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButtonCancel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonOk)
-                .addGap(15, 15, 15))
             .addGroup(layout.createSequentialGroup()
-                .addGap(112, 112, 112)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(jComboBoxType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel16)
+                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel13))
+                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBoxWallBh2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBoxFloorBh2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBoxCeilingBh2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBoxWindowBh2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(9, 9, 9))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jButtonCancel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonOk))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBoxType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGap(14, 14, 14)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBoxType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel14)
+                    .addComponent(jComboBoxWallBh2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel16))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jComboBoxFloorBh2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel15)
+                    .addComponent(jComboBoxCeilingBh2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel13)
+                    .addComponent(jComboBoxWindowBh2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonOk)
                     .addComponent(jButtonCancel))
-                .addContainerGap())
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBoxHousingType(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxHousingType
-        // TODO add your handling code here:
+        // TODO add your handling code here:   
     }//GEN-LAST:event_jComboBoxHousingType
 
+    //확인버튼
     private void jButtonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOkActionPerformed
         // TODO add your handling code here:
         String type = jComboBoxType.getSelectedItem().toString(); //검색 분류 추출
         
-        if (type == "아파트") {
+        if ("아파트".equals(type)) {
             HousingType apart = new Apart();
-            // 메모장 db 아파트 저장
-            //JOptionPane.showMessageDialog(null, type);
+            
+            String htype = apart.display();
+            String ceiling = apart.CeilingBehavior.CeilingAble();
+            String floor = apart.FloorBehavior.FloorAble();
+            String wall = apart.WallBehavior.WallAble();
+            String window = apart.WindowBehavior.WindowAble();
+            String str = String.format("%s\t%s\t%s\t%s\t%s", htype, ceiling, floor, wall, window);
+            
+            ArrayList<HousingTypeInfo> housingtypeInfo = new ArrayList<>();
+            
+            FileMgmt fileMgmt = new FileMgmt();
+            try {
+                fileMgmt.writeFileData("C:\\DB\\HousingTypeList.txt", str);
+            } catch (IOException ex) {
+                Logger.getLogger(HousingTypeGui.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
-        if (type == "빌라") {
+        if ("빌라".equals(type)) {
             HousingType villa = new Villa();
-            // 메모장 db 빌라 저장
-            //JOptionPane.showMessageDialog(null, type);
+            
+            String htype = villa.display();
+            String ceiling = villa.CeilingBehavior.CeilingAble();
+            String floor = villa.FloorBehavior.FloorAble();
+            String wall = villa.WallBehavior.WallAble();
+            String window = villa.WindowBehavior.WindowAble();
+            String str = String.format("%s\t%s\t%s\t%s\t%s", htype, ceiling, floor, wall, window);
+            
+            ArrayList<HousingTypeInfo> housingtypeInfo = new ArrayList<>();
+            
+            FileMgmt fileMgmt = new FileMgmt();
+            try {
+                fileMgmt.writeFileData("C:\\DB\\HousingTypeList.txt", str);
+            } catch (IOException ex) {
+                Logger.getLogger(HousingTypeGui.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
-        if (type == "주택") {
+        if ("주택".equals(type)) {
             HousingType housing = new Housing();
-            // 메모장 db 주택 저장
-            //JOptionPane.showMessageDialog(null, type);
+            
+            String htype = housing.display();
+            String ceiling = housing.CeilingBehavior.CeilingAble();
+            String floor = housing.FloorBehavior.FloorAble();
+            String wall = housing.WallBehavior.WallAble();
+            String window = housing.WindowBehavior.WindowAble();
+            String str = String.format("%s\t%s\t%s\t%s\t%s", htype, ceiling, floor, wall, window);
+            
+            ArrayList<HousingTypeInfo> housingtypeInfo = new ArrayList<>();
+            
+            FileMgmt fileMgmt = new FileMgmt();
+            try {
+                fileMgmt.writeFileData("C:\\DB\\HousingTypeList.txt", str);
+            } catch (IOException ex) {
+                Logger.getLogger(HousingTypeGui.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         dispose(); //창 닫기
         // HousingTypeEditGui 로 이동
     }//GEN-LAST:event_jButtonOkActionPerformed
 
+    //취소버튼
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
         // TODO add your handling code here:
         dispose(); //창 닫기
     }//GEN-LAST:event_jButtonCancelActionPerformed
+    
+    //벽 유형
+    private void jComboBoxWallBh2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxWallBh2ActionPerformed
+        // TODO add your handling code here:
+        // 벽 유형 가져오기
+    }//GEN-LAST:event_jComboBoxWallBh2ActionPerformed
 
+    //천장 유형
+    private void jComboBoxFloorBh2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFloorBh2ActionPerformed
+        // TODO add your handling code here:
+        // 바닥 유형 가져오기
+    }//GEN-LAST:event_jComboBoxFloorBh2ActionPerformed
+
+    //천장 유형
+    private void jComboBoxCeilingBh2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCeilingBh2ActionPerformed
+        // TODO add your handling code here:
+        // 천장 유형 가져오기
+    }//GEN-LAST:event_jComboBoxCeilingBh2ActionPerformed
+
+    //창문
+    private void jComboBoxWindowBh2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxWindowBh2ActionPerformed
+        // TODO add your handling code here:
+        // 창문 유형 가져오기
+    }//GEN-LAST:event_jComboBoxWindowBh2ActionPerformed
+
+    
     /**
      * @param args the command line arguments
      */
@@ -166,7 +381,35 @@ public class HousingTypeGui extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancel;
     private javax.swing.JButton jButtonOk;
+    private javax.swing.JComboBox<String> jComboBoxCeilingBh;
+    private javax.swing.JComboBox<String> jComboBoxCeilingBh1;
+    private javax.swing.JComboBox<String> jComboBoxCeilingBh2;
+    private javax.swing.JComboBox<String> jComboBoxFloorBh;
+    private javax.swing.JComboBox<String> jComboBoxFloorBh1;
+    private javax.swing.JComboBox<String> jComboBoxFloorBh2;
     private javax.swing.JComboBox<String> jComboBoxType;
+    private javax.swing.JComboBox<String> jComboBoxWallBh;
+    private javax.swing.JComboBox<String> jComboBoxWallBh1;
+    private javax.swing.JComboBox<String> jComboBoxWallBh2;
+    private javax.swing.JComboBox<String> jComboBoxWindowBh;
+    private javax.swing.JComboBox<String> jComboBoxWindowBh1;
+    private javax.swing.JComboBox<String> jComboBoxWindowBh2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField jTextFieldtype;
+    private javax.swing.JTextField jTextFieldtype1;
     // End of variables declaration//GEN-END:variables
 }

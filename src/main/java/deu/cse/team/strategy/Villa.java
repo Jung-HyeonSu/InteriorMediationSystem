@@ -19,8 +19,8 @@ public class Villa extends HousingType{
     WindowBehavior = new WindowNoChangeable();
     };
     
-    public void display(){
-        System.out.println("선택하신 유형은 빌라입니다.");
+    public String display() {
+        return "Villa";
     };
     
 }

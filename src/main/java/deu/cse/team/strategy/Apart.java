@@ -19,8 +19,8 @@ public class Apart extends HousingType{
     WindowBehavior = new WindowNoChangeable();
     };
     
-    public void display() {
-        System.out.println("선택하신 유형은 아파트입니다.");
+    public String display() {
+        return "Apart";
     };
     
     
