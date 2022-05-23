@@ -5,7 +5,9 @@
  */
 package deu.cse.team.login;
 
-import deu.cse.team.mainmenu.MainMenu;
+import deu.cse.team.mainmenu.AdminMainMenu;
+import deu.cse.team.mainmenu.CompanyMainMenu;
+import deu.cse.team.mainmenu.UserMainMenu;
 import deu.cse.team.source.AdminInfo;
 import deu.cse.team.source.CurrentTime;
 import deu.cse.team.source.FileMgmt;
@@ -165,9 +167,9 @@ public class Login extends javax.swing.JFrame {
             for (int i = 0 ; i < adminInfo.size() ; i++){
                 if (adminInfo.get(i).getId().equals(id) && adminInfo.get(i).getPw().equals(pw)){
                     JOptionPane.showMessageDialog(null, "관리자 로그인 성공");
-                    MainMenu mainmenu = new MainMenu();
-                    mainmenu.AccessorLable.setText("관리자");
-                    mainmenu.setVisible(true);
+                    AdminMainMenu adminmainmenu = new AdminMainMenu();
+                    adminmainmenu.jLabel3.setText("관리자");
+                    adminmainmenu.setVisible(true);
                     dispose();
                     isSuccess = true;
                     break;
@@ -176,19 +178,33 @@ public class Login extends javax.swing.JFrame {
         } else {
             for (int i = 0; i < userInfo.size(); i++) {
                 if (userInfo.get(i).getId().equals(id) && userInfo.get(i).getPw().equals(pw)) {
-                    JOptionPane.showMessageDialog(null, userInfo.get(i).getName()+"님 로그인하셨습니다.");
-                    try {
-                        fileMgmt.writeFileData("C:\\DB\\Log.txt", id+"\t"+time);
-                    } catch (IOException ex) {
-                        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, userInfo.get(i).getType()+"님 로그인하셨습니다.");
+                    if(userInfo.get(i).getType().equals("user")){
+                        try {
+                            fileMgmt.writeFileData("C:\\DB\\Log.txt", id+"\t"+time);
+                        } catch (IOException ex) {
+                            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        UserMainMenu usermainmenu = new UserMainMenu();
+                        usermainmenu.jLabel3.setText(id);
+                        usermainmenu.setVisible(true);
+                        dispose();
+                        isSuccess = true;
+                        break; 
                     }
-                    MainMenu mainmenu = new MainMenu();
-                    mainmenu.AccessorLable.setText("유저");
-                    mainmenu.ManageButt.setEnabled(false);
-                    mainmenu.setVisible(true);
-                    dispose();
-                    isSuccess = true;
-                    break;    
+                    else{
+                        try {
+                            fileMgmt.writeFileData("C:\\DB\\Log.txt", id+"\t"+time);
+                        } catch (IOException ex) {
+                            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        CompanyMainMenu companymainmenu = new CompanyMainMenu();
+                        companymainmenu.jLabel3.setText(id);
+                        companymainmenu.setVisible(true);
+                        dispose();
+                        isSuccess = true;
+                        break; 
+                    }   
                 }
             }
         }

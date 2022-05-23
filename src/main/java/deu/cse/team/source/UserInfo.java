@@ -20,7 +20,7 @@ public class UserInfo {
         this.pw = pw;
     }
     
-    public String getName() {
+    public String getType() {
         return type;
     }
     
