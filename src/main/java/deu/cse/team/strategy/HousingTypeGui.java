@@ -263,25 +263,25 @@ public class HousingTypeGui extends javax.swing.JFrame {
         
         else if ("아파트".equals(type)) {
             HousingType apart = new Apart();
-            if(apart.WallBehavior.WallAble()=="가능"){
+            if("가능".equals(apart.WallBehavior.WallAble())){
                 jComboBoxWallBh2.setSelectedIndex(1);
             }
             else{
                 jComboBoxWallBh2.setSelectedIndex(2);
             }
-            if(apart.CeilingBehavior.CeilingAble()=="가능"){
+            if("가능".equals(apart.CeilingBehavior.CeilingAble())){
                 jComboBoxCeilingBh2.setSelectedIndex(1);
             }
             else{
                 jComboBoxCeilingBh2.setSelectedIndex(2);
             }
-            if(apart.FloorBehavior.FloorAble()=="가능"){
+            if("가능".equals(apart.FloorBehavior.FloorAble())){
                 jComboBoxFloorBh2.setSelectedIndex(1);
             }
             else{
                 jComboBoxFloorBh2.setSelectedIndex(2);
             }
-            if(apart.WindowBehavior.WindowAble()=="가능"){
+            if("가능".equals(apart.WindowBehavior.WindowAble())){
                 jComboBoxWindowBh2.setSelectedIndex(1);
             }
             else{
@@ -292,25 +292,25 @@ public class HousingTypeGui extends javax.swing.JFrame {
         
         else if ("빌라".equals(type)) {
             HousingType villa = new Villa();
-            if(villa.WallBehavior.WallAble()=="가능"){
+            if("가능".equals(villa.WallBehavior.WallAble())){
                 jComboBoxWallBh2.setSelectedIndex(1);
             }
             else{
                 jComboBoxWallBh2.setSelectedIndex(2);
             }
-            if(villa.CeilingBehavior.CeilingAble()=="가능"){
+            if("가능".equals(villa.CeilingBehavior.CeilingAble())){
                 jComboBoxCeilingBh2.setSelectedIndex(1);
             }
             else{
                 jComboBoxCeilingBh2.setSelectedIndex(2);
             }
-            if(villa.FloorBehavior.FloorAble()=="가능"){
+            if("가능".equals(villa.FloorBehavior.FloorAble())){
                 jComboBoxFloorBh2.setSelectedIndex(1);
             }
             else{
                 jComboBoxFloorBh2.setSelectedIndex(2);
             }
-            if(villa.WindowBehavior.WindowAble()=="가능"){
+            if("가능".equals(villa.WindowBehavior.WindowAble())){
                 jComboBoxWindowBh2.setSelectedIndex(1);
             }
             else{
@@ -321,31 +321,30 @@ public class HousingTypeGui extends javax.swing.JFrame {
         
         else if ("주택".equals(type)) {
             HousingType housing = new Housing();
-            if(housing.WallBehavior.WallAble()=="가능"){
+            if("가능".equals(housing.WallBehavior.WallAble())){
                 jComboBoxWallBh2.setSelectedIndex(1);
             }
             else{
                 jComboBoxWallBh2.setSelectedIndex(2);
             }
-            if(housing.CeilingBehavior.CeilingAble()=="가능"){
+            if("가능".equals(housing.CeilingBehavior.CeilingAble())){
                 jComboBoxCeilingBh2.setSelectedIndex(1);
             }
             else{
                 jComboBoxCeilingBh2.setSelectedIndex(2);
             }
-            if(housing.FloorBehavior.FloorAble()=="가능"){
+            if("가능".equals(housing.FloorBehavior.FloorAble())){
                 jComboBoxFloorBh2.setSelectedIndex(1);
             }
             else{
                 jComboBoxFloorBh2.setSelectedIndex(2);
             }
-            if(housing.WindowBehavior.WindowAble()=="가능"){
+            if("가능".equals(housing.WindowBehavior.WindowAble())){
                 jComboBoxWindowBh2.setSelectedIndex(1);
             }
             else{
                 jComboBoxWindowBh2.setSelectedIndex(2);
             }
-            
         }
     }//GEN-LAST:event_jComboBoxHousingType
 
