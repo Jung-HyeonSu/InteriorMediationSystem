@@ -23,10 +23,13 @@ public class FileMgmt implements FileInterface {
     ArrayList<String> readAdminInfo = new ArrayList();
     ArrayList<String> readConstructionInfo = new ArrayList();
     ArrayList<String> readColorInfo = new ArrayList();
+    ArrayList<String> readHousingTypeInfo = new ArrayList();
+    
     ArrayList<UserInfo> userInfo = new ArrayList<>();
     ArrayList<AdminInfo> adminInfo = new ArrayList<>();
     ArrayList<ConstructionInfo> constructionInfo = new ArrayList<>();
     ArrayList<ColorInfo> colorInfo = new ArrayList();
+    ArrayList<HousingTypeInfo> housingtypeInfo = new ArrayList();
     
     @Override
     public void readFileData(String path) {
@@ -85,6 +88,20 @@ public class FileMgmt implements FileInterface {
             e.printStackTrace();
         }
     }
+    public void readHousingTypeFileData(String path) {
+        try {
+            BufferedReader bfReader = new BufferedReader(new FileReader(new File(path)));
+            String line = "";
+            while ((line = bfReader.readLine()) != null) {
+                readHousingTypeInfo.add(line);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("파일이 존재하지않습니다. 경로를 확인해주세요");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
     @Override
     public void writeFileData(String path, String data) throws IOException {
@@ -131,7 +148,15 @@ public class FileMgmt implements FileInterface {
             colorInfo.add(new ColorInfo(str[0],str[1],str[2]));
         }
     }
+    public void splitHousingTypeFileData() {
+        String line;
 
+        for (int i = 0; i < readHousingTypeInfo.size(); i++) {
+            line = readHousingTypeInfo.get(i);
+            String[] str = line.split("\t");
+            housingtypeInfo.add(new HousingTypeInfo(str[0],str[1],str[2],str[3],str[4]));
+        }
+    }
     
     public ArrayList<UserInfo> returnUserInfo() throws IOException {
         return userInfo;
@@ -148,4 +173,8 @@ public class FileMgmt implements FileInterface {
     public ArrayList<ColorInfo> returnColorInfo() throws IOException {
         return colorInfo;
     }
+    public ArrayList<HousingTypeInfo> returnHousingTypeInfo() throws IOException {
+        return housingtypeInfo;
+    }
+
 }
