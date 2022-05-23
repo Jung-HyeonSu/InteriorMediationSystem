@@ -4,7 +4,7 @@ package deu.cse.team.decorator;
 public abstract class Color {
   String description = "Unknow Color";
 
-  public abstract double cost(); 
+  public abstract int cost(); 
 
   public abstract String ColorValue();
 
