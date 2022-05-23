@@ -191,82 +191,89 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jComboBoxWallBh2" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBoxFloorBh2" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBoxCeilingBh2" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBoxWindowBh2" alignment="1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jButtonCancel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButtonOk" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jSeparator1" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jComboBoxType" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="jButtonCancel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButtonOk" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="34" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jComboBoxType" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="jComboBoxWallBh2" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jComboBoxCeilingBh2" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jComboBoxFloorBh2" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="jComboBoxWindowBh2" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace pref="32" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="38" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jComboBoxType" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jComboBoxType" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+              <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBoxCeilingBh2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBoxFloorBh2" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboBoxWallBh2" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBoxWallBh2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="jComboBoxFloorBh2" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboBoxCeilingBh2" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jComboBoxWindowBh2" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace pref="30" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButtonOk" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonCancel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="19" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -280,10 +287,11 @@
     <Component class="javax.swing.JComboBox" name="jComboBoxType">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="&#xc544;&#xd30c;&#xd2b8;"/>
-            <StringItem index="1" value="&#xbe4c;&#xb77c;"/>
-            <StringItem index="2" value="&#xc8fc;&#xd0dd;"/>
+          <StringArray count="4">
+            <StringItem index="0" value="--&#xc120;&#xd0dd;--"/>
+            <StringItem index="1" value="&#xc544;&#xd30c;&#xd2b8;"/>
+            <StringItem index="2" value="&#xbe4c;&#xb77c;"/>
+            <StringItem index="3" value="&#xc8fc;&#xd0dd;"/>
           </StringArray>
         </Property>
       </Properties>
@@ -333,9 +341,10 @@
     <Component class="javax.swing.JComboBox" name="jComboBoxWallBh2">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="2">
-            <StringItem index="0" value="&#xac00;&#xb2a5;"/>
-            <StringItem index="1" value="&#xbd88;&#xac00;&#xb2a5;"/>
+          <StringArray count="3">
+            <StringItem index="0" value="--&#xc120;&#xd0dd;--"/>
+            <StringItem index="1" value="&#xac00;&#xb2a5;"/>
+            <StringItem index="2" value="&#xbd88;&#xac00;&#xb2a5;"/>
           </StringArray>
         </Property>
       </Properties>
@@ -349,9 +358,10 @@
     <Component class="javax.swing.JComboBox" name="jComboBoxFloorBh2">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="2">
-            <StringItem index="0" value="&#xac00;&#xb2a5;"/>
-            <StringItem index="1" value="&#xbd88;&#xac00;&#xb2a5;"/>
+          <StringArray count="3">
+            <StringItem index="0" value="--&#xc120;&#xd0dd;--"/>
+            <StringItem index="1" value="&#xac00;&#xb2a5;"/>
+            <StringItem index="2" value="&#xbd88;&#xac00;&#xb2a5;"/>
           </StringArray>
         </Property>
       </Properties>
@@ -365,9 +375,10 @@
     <Component class="javax.swing.JComboBox" name="jComboBoxCeilingBh2">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="2">
-            <StringItem index="0" value="&#xac00;&#xb2a5;"/>
-            <StringItem index="1" value="&#xbd88;&#xac00;&#xb2a5;"/>
+          <StringArray count="3">
+            <StringItem index="0" value="--&#xc120;&#xd0dd;--"/>
+            <StringItem index="1" value="&#xac00;&#xb2a5;"/>
+            <StringItem index="2" value="&#xbd88;&#xac00;&#xb2a5;"/>
           </StringArray>
         </Property>
       </Properties>
@@ -381,9 +392,10 @@
     <Component class="javax.swing.JComboBox" name="jComboBoxWindowBh2">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="2">
-            <StringItem index="0" value="&#xac00;&#xb2a5;"/>
-            <StringItem index="1" value="&#xbd88;&#xac00;&#xb2a5;"/>
+          <StringArray count="3">
+            <StringItem index="0" value="--&#xc120;&#xd0dd;--"/>
+            <StringItem index="1" value="&#xac00;&#xb2a5;"/>
+            <StringItem index="2" value="&#xbd88;&#xac00;&#xb2a5;"/>
           </StringArray>
         </Property>
       </Properties>
@@ -393,6 +405,8 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JSeparator" name="jSeparator1">
     </Component>
   </SubComponents>
 </Form>
