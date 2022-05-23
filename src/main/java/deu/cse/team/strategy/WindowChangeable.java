@@ -14,7 +14,7 @@ public class WindowChangeable implements WindowBehavior{
         System.out.println("벽 구조 변경 가능");
     };
     
-    public int WindowAble(){
-        return 1;
+    public String WindowAble(){
+        return "가능";
     }
 }

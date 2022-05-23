@@ -12,5 +12,5 @@ package deu.cse.team.strategy;
 interface WindowBehavior {
     void WindowConstruction();
     
-    int WindowAble();
+    String WindowAble();
 }

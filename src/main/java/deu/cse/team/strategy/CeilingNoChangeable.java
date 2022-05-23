@@ -14,7 +14,7 @@ public class CeilingNoChangeable implements CeilingBehavior {
         System.out.println("천장 구조 변경 불가능");
     };
     
-    public int CeilingAble(){
-        return 2;
+    public String CeilingAble(){
+        return "불가능";
     };
 }

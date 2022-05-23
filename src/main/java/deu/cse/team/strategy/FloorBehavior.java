@@ -12,5 +12,5 @@ package deu.cse.team.strategy;
 interface FloorBehavior {
     void FloorConstruction();
     
-    int FloorAble();
+    String FloorAble();
 }

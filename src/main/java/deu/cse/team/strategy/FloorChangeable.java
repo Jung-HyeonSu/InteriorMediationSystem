@@ -14,8 +14,8 @@ public class FloorChangeable implements FloorBehavior{
         System.out.println("바닥 구조 변경 가능");
     };
     
-    public int FloorAble(){
-        return 1;
+    public String FloorAble(){
+        return "가능";
     };
     
 }

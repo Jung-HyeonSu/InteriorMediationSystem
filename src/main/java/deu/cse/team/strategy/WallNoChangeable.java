@@ -14,7 +14,7 @@ public class WallNoChangeable implements WallBehavior{
         System.out.println("벽 구조 변경 불가능");
     };
     
-    public int WallAble(){
-        return 2;
+    public String WallAble(){
+        return "불가능";
     }
 }

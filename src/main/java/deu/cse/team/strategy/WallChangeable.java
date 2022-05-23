@@ -14,7 +14,7 @@ public class WallChangeable implements WallBehavior{
         System.out.println("벽 구조 변경 가능");
     };
     
-    public int WallAble(){
-        return 1;
+    public String WallAble(){
+        return "가능";
     }
 }

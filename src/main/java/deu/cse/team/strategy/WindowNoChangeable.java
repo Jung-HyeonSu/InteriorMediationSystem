@@ -14,7 +14,7 @@ public class WindowNoChangeable implements WindowBehavior{
         System.out.println("벽 구조 변경 불가능");
     };
     
-    public int WindowAble(){
-        return 2;
+    public String WindowAble(){
+        return "불가능";
     }
 }

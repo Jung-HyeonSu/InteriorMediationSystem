@@ -14,7 +14,7 @@ public class FloorNoChangeable implements FloorBehavior{
         System.out.println("바닥 구조 변경 불가능");
     };
     
-    public int FloorAble(){
-        return 2;
+    public String FloorAble(){
+        return "불가능";
     };
 }

@@ -12,5 +12,5 @@ package deu.cse.team.strategy;
 interface WallBehavior {
     void WallConstruction();
     
-    int WallAble();
+    String WallAble();
 }

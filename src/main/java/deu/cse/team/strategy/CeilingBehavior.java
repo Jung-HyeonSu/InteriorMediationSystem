@@ -12,5 +12,5 @@ package deu.cse.team.strategy;
 interface CeilingBehavior {
     void CeilingConstruction();
     
-    int CeilingAble();
+    String CeilingAble();
 }
