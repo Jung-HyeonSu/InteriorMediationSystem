@@ -5,6 +5,7 @@
 package deu.cse.team.mainmenu;
 
 import deu.cse.team.login.Login;
+import deu.cse.team.strategy.HousingTypeGui;
 
 /**
  *
@@ -47,6 +48,11 @@ public class UserMainMenu extends javax.swing.JFrame {
         jLabel1.setText("메인메뉴");
 
         jButton1.setText("견적서 작성");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         SignOutButton.setText("로그아웃");
         SignOutButton.addActionListener(new java.awt.event.ActionListener() {
@@ -101,6 +107,12 @@ public class UserMainMenu extends javax.swing.JFrame {
         new Login().setVisible(true);
         dispose();
     }//GEN-LAST:event_SignOutButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        new HousingTypeGui().setVisible(true);        
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
