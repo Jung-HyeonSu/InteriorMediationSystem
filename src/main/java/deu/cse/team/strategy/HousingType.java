@@ -14,8 +14,8 @@ public abstract class HousingType {
     protected FloorBehavior FloorBehavior;
     protected CeilingBehavior CeilingBehavior;
     protected WindowBehavior WindowBehavior;
-    protected double Height;
-    protected double AFlatNumber;
+    protected int Height;
+    protected int AFlatNumber;
     
     public abstract String display();
     
@@ -49,10 +49,10 @@ public abstract class HousingType {
         WindowBehavior = wnb;
     };
     
-    public void SetHeight(double height){
+    public void SetHeight(int height){
         Height = height;
     };
-    public void SetAFlatNumber(double aflatnumber){
+    public void SetAFlatNumber(int aflatnumber){
         AFlatNumber = aflatnumber;
     };
     
