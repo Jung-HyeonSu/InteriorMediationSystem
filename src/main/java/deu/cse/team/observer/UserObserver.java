@@ -6,7 +6,7 @@ package deu.cse.team.observer;
 
 /**
  *
- * @author PC
+ * @author 정현수
  */
 public class UserObserver implements Observer{
     private String notice;
@@ -19,10 +19,10 @@ public class UserObserver implements Observer{
     @Override
     public void update(String notice) {
         this.notice = notice;
-        display();
+        display(notice);
     }
-    private void display() {
-       System.out.println("Today Notice:"+notice);
+    public String display(String notice) {
+       return notice;
     }
     
 }
