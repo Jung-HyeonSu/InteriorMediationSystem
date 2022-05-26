@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author PC
+ * @author 정현수
  */
 public class WeatherData implements Subject {
 

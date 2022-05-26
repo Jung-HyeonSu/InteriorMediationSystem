@@ -6,8 +6,22 @@ package deu.cse.team.observer;
 
 /**
  *
- * @author PC
+ * @author 정현수
  */
-public class CompanyObserver {
+public class CompanyObserver implements Observer{
+    private String notice;
+    private WeatherData weatherData;
     
+    public CompanyObserver(WeatherData weatherData){
+        this.weatherData = weatherData;
+        weatherData.registerObserver(this);
+    }
+    @Override
+    public void update(String notice) {
+        this.notice = notice;
+        display(notice);
+    }
+    public String display(String notice) {
+       return notice;
+    }
 }

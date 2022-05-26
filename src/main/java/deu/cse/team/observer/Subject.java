@@ -4,12 +4,10 @@
  */
 package deu.cse.team.observer;
 
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  *
- * @author PC
+ * @author 정현수
  */
 public interface Subject {
     public void registerObserver(Observer o);

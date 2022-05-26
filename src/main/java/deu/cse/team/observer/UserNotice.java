@@ -21,6 +21,7 @@ public class UserNotice extends javax.swing.JFrame {
      */
     public UserNotice() {
         initComponents();
+        noticeLoad();
     }
 
     /**
@@ -115,7 +116,25 @@ public class UserNotice extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    public void noticeLoad() {
+        ArrayList<NoticeInfo> noticeInfo = new ArrayList();
+        WeatherData weatherData = new WeatherData();
+        UserObserver userObserver = new UserObserver(weatherData);
+        try {
+            FileMgmt fileMgmt = new FileMgmt();
+            fileMgmt.readNoticeFileData("C:\\DB\\Notice.txt");
+            fileMgmt.splitNoticeFileData();
+            noticeInfo = fileMgmt.returnNoticeInfo();
+            for (int i = 0; i < noticeInfo.size(); i++) {
+                if (noticeInfo.get(i).getType().equals("고객")) {
+                    weatherData.setNotice(noticeInfo.get(i).getNotice());
+                    jTextArea1.setText(userObserver.display(noticeInfo.get(i).getNotice()));
+                }
+            }
+        } catch (IOException e) {
+        }
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

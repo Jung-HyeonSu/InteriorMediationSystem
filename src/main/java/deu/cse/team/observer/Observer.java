@@ -6,7 +6,7 @@ package deu.cse.team.observer;
 
 /**
  *
- * @author PC
+ * @author 정현수
  */
 public interface Observer {
     public void update(String notice);
