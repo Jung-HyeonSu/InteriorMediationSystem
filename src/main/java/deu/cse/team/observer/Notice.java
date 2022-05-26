@@ -4,6 +4,19 @@
  */
 package deu.cse.team.observer;
 
+import deu.cse.team.source.FileMgmt;
+import deu.cse.team.source.NoticeInfo;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -115,7 +128,180 @@ public class Notice extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+        String type = jComboBox1.getSelectedItem().toString();
+        String weatherSelect = jComboBox2.getSelectedItem().toString();
+
+        if (weatherSelect.equals("포함")) {
+            // 날씨 정보를 가져오는 부분
+            URL url;//URL 주소 객체
+            URLConnection connection;//URL접속을 가지는 객체
+
+            InputStream is;//URL접속에서 내용을 읽기위한 Stream
+            InputStreamReader isr;
+            BufferedReader br;
+
+            String weatherID = null; //날씨 ID
+            String weather = null; //날씨 이름
+
+            try {
+                //URL객체를 생성하고 해당 URL로 접속한다
+                url = new URL("http://api.openweathermap.org/data/2.5/weather?id=1838524&APPID=585b07845acf5ad33eb46532f8b54809");
+                //id 1835847=서울,  1838524=부산  현재 부산으로 설정됨
+                connection = url.openConnection();
+                //내용을 읽어오기위한 InputStream객체를 생성한다
+                is = connection.getInputStream();
+                isr = new InputStreamReader(is);
+                br = new BufferedReader(isr);
+
+                //내용을 읽어서 화면에 출력한다
+                String buf = null;
+                while (true) {
+                    buf = br.readLine();
+                    if (buf == null) {
+                        break;
+                    }
+                    //System.out.println(buf);
+                    //int a2 = buf.indexOf("temp");
+                    int a3 = buf.indexOf("id");
+                    //double temp=Double.parseDouble(buf.substring(a2+6, a2+12))-273.15;
+                    weatherID = buf.substring(a3 + 4, a3 + 7);
+                    //System.out.println("서울의 현재 온도(섭씨):"+temp);
+                    //System.out.println("today weather id: "+weatherID);
+                }
+            } catch (MalformedURLException mue) {
+                System.err.println("잘못된 URL입니다.");
+                System.exit(1);
+            } catch (IOException ioe) {
+                System.err.println("IOException " + ioe);
+                ioe.printStackTrace();
+                System.exit(1);
+            }
+
+            if (weatherID.substring(0, 1).equals("2")) {
+                weather = "Thunderstorm";
+            } else if (weatherID.substring(0, 1).equals("3")) {
+                weather = "Drizzle";
+            } else if (weatherID.substring(0, 1).equals("5")) {
+                weather = "Rain";
+            } else if (weatherID.substring(0, 1).equals("6")) {
+                weather = "Snow";
+            } else if (weatherID.substring(0, 1).equals("7")) {
+                weather = "Atmosphere";
+            } else if (weatherID.substring(0, 1).equals("8") && weatherID.substring(2, 3).equals("0")) {
+                weather = "Clear";
+            } else if (weatherID.substring(0, 1).equals("8") && !weatherID.substring(2, 3).equals("0")) {
+                weather = "Cloud";
+            }
+            String notice = "오늘의 날씨는 " + weather + "입니다. " + jTextArea1.getText();
+            WeatherData weatherData = new WeatherData();
+            
+            FileMgmt fileMgmt = new FileMgmt();
+            if (type.equals("고객")) {
+                //String str = String.format("%s\t%s", type, notice);
+                //UserObserver userObserver = new UserObserver(weatherData);
+                //weatherData.setNotice("Today's weather is " + weather + ", " + text);
+                ArrayList<NoticeInfo> noticeInfo = new ArrayList<>();
+                fileMgmt.readNoticeFileData("C:\\DB\\Notice.txt");
+                fileMgmt.splitNoticeFileData();
+                try {   
+                    PrintWriter pw = new PrintWriter("C:\\DB\\Notice.txt");
+                    noticeInfo = fileMgmt.returnNoticeInfo();
+                    String data;
+                    for (int i = 0; i < noticeInfo.size(); i++) {
+                        if(noticeInfo.get(i).getType().equals("고객")){
+                            noticeInfo.get(i).setNotice(notice);
+                        }
+                        data = String.format("%s\t%s",
+                            noticeInfo.get(i).getType(),
+                            noticeInfo.get(i).getNotice());
+                        pw.println(data);
+                    }
+                    pw.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(Notice.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }           
+            if (type.equals("업체")) {
+                //CompanyObserver companyObserver = new CompanyObserver(weatherData);
+                //weatherData.setNotice("Today's weather is " + weather + ", " + text);
+                ArrayList<NoticeInfo> noticeInfo = new ArrayList<>();
+                fileMgmt.readNoticeFileData("C:\\DB\\Notice.txt");
+                fileMgmt.splitNoticeFileData();
+                try {   
+                    PrintWriter pw = new PrintWriter("C:\\DB\\Notice.txt");
+                    noticeInfo = fileMgmt.returnNoticeInfo();
+                    String data;
+                    for (int i = 0; i < noticeInfo.size(); i++) {
+                        if(noticeInfo.get(i).getType().equals("업체")){
+                            noticeInfo.get(i).setNotice(notice);
+                        }
+                        data = String.format("%s\t%s",
+                            noticeInfo.get(i).getType(),
+                            noticeInfo.get(i).getNotice());
+                        pw.println(data);
+                    }
+                    pw.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(Notice.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+        else{ //불포함
+            String notice = jTextArea1.getText();
+            FileMgmt fileMgmt = new FileMgmt();
+            if (type.equals("고객")) {
+                //String str = String.format("%s\t%s", type, notice);
+                //UserObserver userObserver = new UserObserver(weatherData);
+                //weatherData.setNotice("Today's weather is " + weather + ", " + text);
+                ArrayList<NoticeInfo> noticeInfo = new ArrayList<>();
+                fileMgmt.readNoticeFileData("C:\\DB\\Notice.txt");
+                fileMgmt.splitNoticeFileData();
+                try {   
+                    PrintWriter pw = new PrintWriter("C:\\DB\\Notice.txt");
+                    noticeInfo = fileMgmt.returnNoticeInfo();
+                    String data;
+                    for (int i = 0; i < noticeInfo.size(); i++) {
+                        if(noticeInfo.get(i).getType().equals("고객")){
+                            noticeInfo.get(i).setNotice(notice);
+                        }
+                        data = String.format("%s\t%s",
+                            noticeInfo.get(i).getType(),
+                            noticeInfo.get(i).getNotice());
+                        pw.println(data);
+                    }
+                    pw.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(Notice.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+            
+            if (type.equals("업체")) {
+                //CompanyObserver companyObserver = new CompanyObserver(weatherData);
+                //weatherData.setNotice("Today's weather is " + weather + ", " + text);
+                ArrayList<NoticeInfo> noticeInfo = new ArrayList<>();
+                fileMgmt.readNoticeFileData("C:\\DB\\Notice.txt");
+                fileMgmt.splitNoticeFileData();
+                try {   
+                    PrintWriter pw = new PrintWriter("C:\\DB\\Notice.txt");
+                    noticeInfo = fileMgmt.returnNoticeInfo();
+                    String data;
+                    for (int i = 0; i < noticeInfo.size(); i++) {
+                        if(noticeInfo.get(i).getType().equals("업체")){
+                            noticeInfo.get(i).setNotice(notice);
+                        }
+                        data = String.format("%s\t%s",
+                            noticeInfo.get(i).getType(),
+                            noticeInfo.get(i).getNotice());
+                        pw.println(data);
+                    }
+                    pw.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(Notice.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
