@@ -24,12 +24,14 @@ public class FileMgmt implements FileInterface {
     ArrayList<String> readConstructionInfo = new ArrayList();
     ArrayList<String> readColorInfo = new ArrayList();
     ArrayList<String> readHousingTypeInfo = new ArrayList();
+    ArrayList<String> readNoticeInfo = new ArrayList();
     
     ArrayList<UserInfo> userInfo = new ArrayList<>();
     ArrayList<AdminInfo> adminInfo = new ArrayList<>();
     ArrayList<ConstructionInfo> constructionInfo = new ArrayList<>();
     ArrayList<ColorInfo> colorInfo = new ArrayList();
     ArrayList<HousingTypeInfo> housingtypeInfo = new ArrayList();
+    ArrayList<NoticeInfo> noticeInfo = new ArrayList();
     
     @Override
     public void readFileData(String path) {
@@ -102,6 +104,20 @@ public class FileMgmt implements FileInterface {
             e.printStackTrace();
         }
     }
+    public void readNoticeFileData(String path) {
+        try {
+            BufferedReader bfReader = new BufferedReader(new FileReader(new File(path)));
+            String line = "";
+            while ((line = bfReader.readLine()) != null) {
+                readNoticeInfo.add(line);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("파일이 존재하지않습니다. 경로를 확인해주세요");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
     @Override
     public void writeFileData(String path, String data) throws IOException {
@@ -157,6 +173,15 @@ public class FileMgmt implements FileInterface {
             housingtypeInfo.add(new HousingTypeInfo(str[0],str[1],str[2],str[3],str[4]));
         }
     }
+    public void splitNoticeFileData() {
+        String line;
+
+        for (int i = 0; i < readNoticeInfo.size(); i++) {
+            line = readNoticeInfo.get(i);
+            String[] str = line.split("\t");
+            noticeInfo.add(new NoticeInfo(str[0],str[1]));
+        }
+    }
     
     public ArrayList<UserInfo> returnUserInfo() throws IOException {
         return userInfo;
@@ -176,5 +201,7 @@ public class FileMgmt implements FileInterface {
     public ArrayList<HousingTypeInfo> returnHousingTypeInfo() throws IOException {
         return housingtypeInfo;
     }
-
+    public ArrayList<NoticeInfo> returnNoticeInfo() throws IOException {
+        return noticeInfo;
+    }
 }
