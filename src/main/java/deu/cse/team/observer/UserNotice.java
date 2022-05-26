@@ -21,6 +21,8 @@ public class UserNotice extends javax.swing.JFrame {
      */
     public UserNotice() {
         initComponents();
+        setLocationRelativeTo(this);
+        setTitle("User Notice");
         noticeLoad();
     }
 

@@ -20,7 +20,9 @@ public class CompanyNotice extends javax.swing.JFrame {
      */
     public CompanyNotice() {
         initComponents();
-        noticeLoad();
+        setLocationRelativeTo(this);
+        setTitle("Company Notice");
+        noticeLoad();   
     }
 
     /**

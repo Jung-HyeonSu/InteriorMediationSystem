@@ -29,6 +29,8 @@ public class Notice extends javax.swing.JFrame {
      */
     public Notice() {
         initComponents();
+        setLocationRelativeTo(this);
+        setTitle("Notice");
     }
 
     /**
