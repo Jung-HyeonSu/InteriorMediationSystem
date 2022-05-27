@@ -217,9 +217,6 @@ public class Notice extends javax.swing.JFrame {
             
             FileMgmt fileMgmt = new FileMgmt();
             if (type.equals("고객")) {
-                //String str = String.format("%s\t%s", type, notice);
-                //UserObserver userObserver = new UserObserver(weatherData);
-                //weatherData.setNotice("Today's weather is " + weather + ", " + text);
                 ArrayList<NoticeInfo> noticeInfo = new ArrayList<>();
                 fileMgmt.readNoticeFileData("C:\\DB\\Notice.txt");
                 fileMgmt.splitNoticeFileData();
@@ -242,8 +239,6 @@ public class Notice extends javax.swing.JFrame {
                 }
             }           
             else if (type.equals("업체")) {
-                //CompanyObserver companyObserver = new CompanyObserver(weatherData);
-                //weatherData.setNotice("Today's weather is " + weather + ", " + text);
                 ArrayList<NoticeInfo> noticeInfo = new ArrayList<>();
                 fileMgmt.readNoticeFileData("C:\\DB\\Notice.txt");
                 fileMgmt.splitNoticeFileData();
