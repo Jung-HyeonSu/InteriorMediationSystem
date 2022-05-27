@@ -8,7 +8,7 @@ package deu.cse.team.observer;
  *
  * @author 정현수
  */
-public class UserObserver implements Observer{
+public class UserObserver implements Observer, DisplayElement {
     private String notice;
     private WeatherData weatherData;
     
