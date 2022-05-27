@@ -9,18 +9,28 @@ package deu.cse.team.source;
  * @author Yool
  */
 public class TileInfo {
-    String texture;
     String mood;
+    String texture;
     String color;
     String shape;
     String design;
+    String amount;
     
-     public TileInfo(String texture, String mood, String color, String shape, String design){
-        this.texture = texture;
+     public TileInfo(String mood, String texture, String color, String shape, String design, String amount){
         this.mood = mood;
+        this.texture = texture;
         this.color = color;
         this.shape = shape;
         this.design = design;
+        this.amount = amount;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
     }
 
     public String getTexture() {
