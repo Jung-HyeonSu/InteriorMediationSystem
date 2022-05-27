@@ -8,6 +8,8 @@ import deu.cse.team.mainmenu.AdminMainMenu;
 import deu.cse.team.source.FileMgmt;
 import deu.cse.team.source.NoticeInfo;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -75,7 +77,7 @@ public class Notice extends javax.swing.JFrame {
 
         jLabel3.setText("유형:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "고객", "업체" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "고객", "업체", "모두" }));
 
         jLabel4.setText("날씨 정보:");
 
@@ -239,7 +241,7 @@ public class Notice extends javax.swing.JFrame {
                     Logger.getLogger(Notice.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }           
-            if (type.equals("업체")) {
+            else if (type.equals("업체")) {
                 //CompanyObserver companyObserver = new CompanyObserver(weatherData);
                 //weatherData.setNotice("Today's weather is " + weather + ", " + text);
                 ArrayList<NoticeInfo> noticeInfo = new ArrayList<>();
@@ -263,15 +265,32 @@ public class Notice extends javax.swing.JFrame {
                     Logger.getLogger(Notice.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+            else if (type.equals("모두")) {
 
+                ArrayList<NoticeInfo> noticeInfo = new ArrayList<>();
+                fileMgmt.readNoticeFileData("C:\\DB\\Notice.txt");
+                fileMgmt.splitNoticeFileData();
+                try {   
+                    PrintWriter pw = new PrintWriter("C:\\DB\\Notice.txt");
+                    noticeInfo = fileMgmt.returnNoticeInfo();
+                    String data;
+                    for (int i = 0; i < noticeInfo.size(); i++) {
+                        noticeInfo.get(i).setNotice(notice);
+                        data = String.format("%s\t%s",
+                            noticeInfo.get(i).getType(),
+                            noticeInfo.get(i).getNotice());
+                        pw.println(data);
+                    }
+                    pw.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(Notice.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
         else{ //불포함
             String notice = jTextArea1.getText();
             FileMgmt fileMgmt = new FileMgmt();
             if (type.equals("고객")) {
-                //String str = String.format("%s\t%s", type, notice);
-                //UserObserver userObserver = new UserObserver(weatherData);
-                //weatherData.setNotice("Today's weather is " + weather + ", " + text);
                 ArrayList<NoticeInfo> noticeInfo = new ArrayList<>();
                 fileMgmt.readNoticeFileData("C:\\DB\\Notice.txt");
                 fileMgmt.splitNoticeFileData();
@@ -293,11 +312,7 @@ public class Notice extends javax.swing.JFrame {
                     Logger.getLogger(Notice.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            
-            
-            if (type.equals("업체")) {
-                //CompanyObserver companyObserver = new CompanyObserver(weatherData);
-                //weatherData.setNotice("Today's weather is " + weather + ", " + text);
+            else if (type.equals("업체")) {
                 ArrayList<NoticeInfo> noticeInfo = new ArrayList<>();
                 fileMgmt.readNoticeFileData("C:\\DB\\Notice.txt");
                 fileMgmt.splitNoticeFileData();
@@ -309,6 +324,26 @@ public class Notice extends javax.swing.JFrame {
                         if(noticeInfo.get(i).getType().equals("업체")){
                             noticeInfo.get(i).setNotice(notice);
                         }
+                        data = String.format("%s\t%s",
+                            noticeInfo.get(i).getType(),
+                            noticeInfo.get(i).getNotice());
+                        pw.println(data);
+                    }
+                    pw.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(Notice.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            else if (type.equals("모두")) {
+                ArrayList<NoticeInfo> noticeInfo = new ArrayList<>();
+                fileMgmt.readNoticeFileData("C:\\DB\\Notice.txt");
+                fileMgmt.splitNoticeFileData();
+                try {   
+                    PrintWriter pw = new PrintWriter("C:\\DB\\Notice.txt");
+                    noticeInfo = fileMgmt.returnNoticeInfo();
+                    String data;
+                    for (int i = 0; i < noticeInfo.size(); i++) {
+                        noticeInfo.get(i).setNotice(notice);
                         data = String.format("%s\t%s",
                             noticeInfo.get(i).getType(),
                             noticeInfo.get(i).getNotice());
