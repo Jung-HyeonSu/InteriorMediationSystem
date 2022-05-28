@@ -12,7 +12,6 @@ public class WoodTile extends Tile {
 
     @Override
   public void prepare() {
-      System.out.println();
       this.color = this.tileFactory.createColor();
       this.shape = this.tileFactory.createShape();
       this.design = this.tileFactory.createDesign();
