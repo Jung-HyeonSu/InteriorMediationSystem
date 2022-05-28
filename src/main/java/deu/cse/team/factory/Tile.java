@@ -18,6 +18,4 @@ public class Tile {
     }
 
 
-  protected String name = null;
-
 }
