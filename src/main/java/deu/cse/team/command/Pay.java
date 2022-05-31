@@ -349,19 +349,37 @@ public class Pay extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        SimpleRemoteControl remote = new SimpleRemoteControl();
-        PaymentConfirmCommand paymentConfirmCommand = new PaymentConfirmCommand();
-        PaymentTypeCommand paymentTypeCommand = new PaymentTypeCommand();
+        RemoteControl remoteControl = new RemoteControl();
         
-        LightOnCommand lightOn = new LightOnCommand(light);
+        PaymentType paymentType = new PaymentType();
+        PaymentConfirm paymentConfirm = new PaymentConfirm();
         
-        GarageDoorOpenCommand garageOpen = 
-            new GarageDoorOpenCommand(garageDoor);
- 
-        remote.setCommand(lightOn);
-        remote.buttonWasPressed();
-        remote.setCommand(garageOpen);
-        remote.buttonWasPressed();
+        PayTypeCashCommand payTypeCash = new PayTypeCashCommand(paymentType);
+        PayTypeCreditCardCommand payTypeCreditCard = new PayTypeCreditCardCommand(paymentType);
+        PayTypeCheckCardCommand payTypeCheckCard = new PayTypeCheckCardCommand(paymentType);
+        
+        PayConfirmOkCommand payConfirmOkCommnad = new PayConfirmOkCommand(paymentConfirm);
+        PayConfirmCancelCommand payConfirmCancelCommnad = new PayConfirmCancelCommand(paymentConfirm);
+        
+        
+        remoteControl.setCommand(0, payTypeCash, payTypeCreditCard, payTypeCheckCard);
+        remoteControl.setCommand(1, payConfirmOkCommnad, payConfirmCancelCommnad);
+        
+        
+        
+        
+        
+        
+        
+        //결제수단 선택
+        remoteControl.A_ButtonWasPushed(0); //현금
+        remoteControl.B_ButtonWasPushed(0); //신용카드
+        remoteControl.C_ButtonWasPushed(0); //체크카드
+        
+        //결제 확정 
+        remoteControl.A_ButtonWasPushed(1); //확인
+        remoteControl.B_ButtonWasPushed(1); //취소
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
