@@ -5,9 +5,15 @@
 package deu.cse.team.factory;
 
 import deu.cse.team.command.PayGui;
+import deu.cse.team.mainmenu.UserMainMenu;
+import deu.cse.team.observer.Notice;
+import deu.cse.team.source.EstimateInfo;
 import deu.cse.team.source.FileMgmt;
+import deu.cse.team.source.HousingTypeInfo;
 import deu.cse.team.source.TileInfo;
+import deu.cse.team.strategy.HousingTypeGui;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -274,6 +280,81 @@ public class TileFactoryGui extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        
+        
+        
+        //Estimate 삭제
+        FileMgmt fileMgmt = new FileMgmt();
+        ArrayList<EstimateInfo> estimateInfo = new ArrayList<>();
+        fileMgmt.readEstimateFileData("C:\\DB\\EstimateList.txt");
+        fileMgmt.splitEstimateFileData();
+        try {   
+            PrintWriter pw = new PrintWriter("C:\\DB\\EstimateList.txt");
+            estimateInfo = fileMgmt.returnEstimateInfo();
+            String data;
+            for (int i = 0; i < estimateInfo.size(); i++) {
+                if(!num.equals(estimateInfo.get(i).getNum())){
+                data = String.format("%s\t%s", estimateInfo.get(i).getId(), estimateInfo.get(i).getNum());
+                pw.println(data);
+            }
+        }
+        pw.close();
+        } 
+        catch (IOException ex) {
+           Logger.getLogger(UserMainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        //HousingType 삭제
+        ArrayList<HousingTypeInfo> housingTypeInfo = new ArrayList<>();
+        fileMgmt.readHousingTypeFileData("C:\\DB\\HousingTypeList.txt");
+        fileMgmt.splitHousingTypeFileData();
+        try {   
+            PrintWriter pw = new PrintWriter("C:\\DB\\HousingTypeList.txt");
+            housingTypeInfo = fileMgmt.returnHousingTypeInfo();
+            String data;
+            for (int i = 0; i < housingTypeInfo.size(); i++) {
+                if(!num.equals(housingTypeInfo.get(i).getNum())){
+                    String num;
+                    data = String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", housingTypeInfo.get(i).getNum(), 
+                            housingTypeInfo.get(i).getHousingtype(),
+                            housingTypeInfo.get(i).getCeilingtype(),
+                            housingTypeInfo.get(i).getFloortype(),
+                            housingTypeInfo.get(i).getWalltype(),
+                            housingTypeInfo.get(i).getWindowtype(),
+                            housingTypeInfo.get(i).getHeight(),
+                            housingTypeInfo.get(i).getAflatnumber());
+                data = String.format("%s\t%s", estimateInfo.get(i).getId(), estimateInfo.get(i).getNum());
+                pw.println(data);
+            }
+        }
+        pw.close();
+        } 
+        catch (IOException ex) {
+           Logger.getLogger(HousingTypeGui.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        //paint 삭제
+        /*ArrayList<EstimateInfo> estimateInfo = new ArrayList<>();
+        fileMgmt.readEstimateFileData("C:\\DB\\EstimateList.txt");
+        fileMgmt.splitEstimateFileData();
+        try {   
+            PrintWriter pw = new PrintWriter("C:\\DB\\EstimateList.txt");
+            estimateInfo = fileMgmt.returnEstimateInfo();
+            String data;
+            for (int i = 0; i < estimateInfo.size(); i++) {
+                if(!num.equals(estimateInfo.get(i).getNum())){
+                data = String.format("%s\t%s", estimateInfo.get(i).getId(), estimateInfo.get(i).getNum());
+                pw.println(data);
+            }
+        }
+        pw.close();
+        } 
+        catch (IOException ex) {
+           Logger.getLogger(Notice.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        */
+        
         dispose();
         
     }//GEN-LAST:event_jButton2ActionPerformed

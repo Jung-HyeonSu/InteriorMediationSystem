@@ -2,8 +2,11 @@ package deu.cse.team.strategy;
 
 import deu.cse.team.decorator.AddOption;
 import deu.cse.team.factory.TileFactoryGui;
+import deu.cse.team.observer.Notice;
+import deu.cse.team.source.EstimateInfo;
 import deu.cse.team.source.FileMgmt;
 import deu.cse.team.source.HousingTypeInfo;
+import deu.cse.team.source.NoticeInfo;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -434,7 +437,6 @@ public class HousingTypeGui extends javax.swing.JFrame {
             String height = jTextField1.getText();
             String aflatnumber = jTextField2.getText();
             
-            
             String str = String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", num, htype, ceiling, floor, wall, window, height, aflatnumber);
             
             ArrayList<HousingTypeInfo> housingtypeInfo = new ArrayList<>();
@@ -455,6 +457,28 @@ public class HousingTypeGui extends javax.swing.JFrame {
     //취소버튼
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
         // TODO add your handling code here:
+        
+        //Estimate 삭제
+        FileMgmt fileMgmt = new FileMgmt();
+        ArrayList<EstimateInfo> estimateInfo = new ArrayList<>();
+        fileMgmt.readEstimateFileData("C:\\DB\\EstimateList.txt");
+        fileMgmt.splitEstimateFileData();
+        try {   
+            PrintWriter pw = new PrintWriter("C:\\DB\\EstimateList.txt");
+            estimateInfo = fileMgmt.returnEstimateInfo();
+            String data;
+            for (int i = 0; i < estimateInfo.size(); i++) {
+                if(!num.equals(estimateInfo.get(i).getNum())){
+                data = String.format("%s\t%s", estimateInfo.get(i).getId(), estimateInfo.get(i).getNum());
+                pw.println(data);
+            }
+        }
+        pw.close();
+        } 
+        catch (IOException ex) {
+           Logger.getLogger(Notice.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+        
         dispose(); //창 닫기
     }//GEN-LAST:event_jButtonCancelActionPerformed
     
