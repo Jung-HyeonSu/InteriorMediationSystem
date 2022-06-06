@@ -14,7 +14,7 @@ class Orange extends CondimentDecorator {
   }
 
   public String getDescription() {
-      return color.getDescription() + ", Orange";
+      return color.getDescription() + "\t주황색";
   }
 
   public int cost() {

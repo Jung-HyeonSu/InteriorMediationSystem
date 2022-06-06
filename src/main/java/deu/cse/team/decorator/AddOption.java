@@ -6,10 +6,15 @@ package deu.cse.team.decorator;
 
 import deu.cse.team.factory.TileFactoryGui;
 import deu.cse.team.source.ColorInfo;
+import deu.cse.team.source.EstimateInfo;
 import deu.cse.team.source.FileMgmt;
+import deu.cse.team.source.PaintInfo;
 import deu.cse.team.strategy.HousingTypeGui;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -27,6 +32,8 @@ public class AddOption extends javax.swing.JFrame {
     
     public AddOption() {
         initComponents();
+        setLocationRelativeTo(this);
+        setTitle("Paint");
         loadColorData();
     }
     
@@ -56,6 +63,7 @@ public class AddOption extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,6 +142,13 @@ public class AddOption extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("취소");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -144,20 +159,21 @@ public class AddOption extends javax.swing.JFrame {
                         .addGap(34, 34, 34)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(221, 221, 221)
                         .addComponent(jButton1)
                         .addGap(29, 29, 29)
-                        .addComponent(jButton2)))
+                        .addComponent(jButton2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton3))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(22, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addGap(37, 37, 37))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,9 +188,11 @@ public class AddOption extends javax.swing.JFrame {
                     .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jButton3))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         pack();
@@ -212,7 +230,15 @@ public class AddOption extends javax.swing.JFrame {
                 if(jTable2.getValueAt(i, 1).equals("Yellow")){
                     color = new Yellow(color);
                 }
-                JOptionPane.showMessageDialog(null, color.getDescription() + color.cost() + "원");
+                
+                String str = String.format("%s\t%s\t%s", num, color.getDescription(), color.cost());
+                ArrayList<PaintInfo> paintInfo = new ArrayList<>();
+                FileMgmt fileMgmt = new FileMgmt();
+                try {
+                    fileMgmt.writeFileData("C:\\DB\\Paint.txt", str);
+                } catch (IOException ex) {
+                    Logger.getLogger(HousingTypeGui.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
             if(jTable2.getValueAt(i, 0).equals("바닥")){
                 Color color2 = new Floor();
@@ -225,7 +251,14 @@ public class AddOption extends javax.swing.JFrame {
                 if(jTable2.getValueAt(i, 1).equals("Yellow")){
                     color2 = new Yellow(color2);
                 }
-                JOptionPane.showMessageDialog(null, color2.getDescription() + color2.cost() + "원");
+                String str = String.format("%s\t%s\t%s", num, color2.getDescription(), color2.cost());
+                ArrayList<PaintInfo> paintInfo = new ArrayList<>();
+                FileMgmt fileMgmt = new FileMgmt();
+                try {
+                    fileMgmt.writeFileData("C:\\DB\\Paint.txt", str);
+                } catch (IOException ex) {
+                    Logger.getLogger(HousingTypeGui.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
             if(jTable2.getValueAt(i, 0).equals("천장")){
                 Color color3 = new Celling();
@@ -238,7 +271,14 @@ public class AddOption extends javax.swing.JFrame {
                 if(jTable2.getValueAt(i, 1).equals("Yellow")){
                     color3 = new Yellow(color3);
                 }
-                JOptionPane.showMessageDialog(null, color3.getDescription() + color3.cost() + "원");
+                String str = String.format("%s\t%s\t%s", num, color3.getDescription(), color3.cost());
+                ArrayList<PaintInfo> paintInfo = new ArrayList<>();
+                FileMgmt fileMgmt = new FileMgmt();
+                try {
+                    fileMgmt.writeFileData("C:\\DB\\Paint.txt", str);
+                } catch (IOException ex) {
+                    Logger.getLogger(HousingTypeGui.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
             if(jTable2.getValueAt(i, 0).equals("창문")){
                 Color color4 = new Window();
@@ -251,7 +291,14 @@ public class AddOption extends javax.swing.JFrame {
                 if(jTable2.getValueAt(i, 1).equals("Yellow")){
                     color4 = new Yellow(color4);
                 }
-                JOptionPane.showMessageDialog(null, color4.getDescription() + color4.cost() + "원");
+                String str = String.format("%s\t%s\t%s", num, color4.getDescription(), color4.cost());
+                ArrayList<PaintInfo> paintInfo = new ArrayList<>();
+                FileMgmt fileMgmt = new FileMgmt();
+                try {
+                    fileMgmt.writeFileData("C:\\DB\\Paint.txt", str);
+                } catch (IOException ex) {
+                    Logger.getLogger(HousingTypeGui.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
         
@@ -260,6 +307,33 @@ public class AddOption extends javax.swing.JFrame {
         tileFactoryGui.setVisible(true);     
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+        //Estimate 삭제
+        FileMgmt fileMgmt = new FileMgmt();
+        ArrayList<EstimateInfo> estimateInfo = new ArrayList<>();
+        fileMgmt.readEstimateFileData("C:\\DB\\EstimateList.txt");
+        fileMgmt.splitEstimateFileData();
+        try {
+            PrintWriter pw = new PrintWriter("C:\\DB\\EstimateList.txt");
+            estimateInfo = fileMgmt.returnEstimateInfo();
+            String data;
+            for (int i = 0; i < estimateInfo.size(); i++) {
+                if(!num.equals(estimateInfo.get(i).getNum())){
+                data = String.format("%s\t%s", estimateInfo.get(i).getId(), estimateInfo.get(i).getNum());
+                pw.println(data);
+            }
+        }
+        pw.close();
+        } 
+        catch (IOException ex) {
+           Logger.getLogger(AddOption.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void loadColorData(){
         String type = jComboBox1.getSelectedItem().toString();
@@ -320,6 +394,7 @@ public class AddOption extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;

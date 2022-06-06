@@ -14,7 +14,7 @@ class Yellow extends CondimentDecorator {
   }
 
   public String getDescription() {
-      return color.getDescription() + ", Yellow";
+      return color.getDescription() + "\t노란색";
   }
 
   public int cost() {

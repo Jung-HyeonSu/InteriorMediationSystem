@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 class Celling extends Color {
   public Celling() {
-     description = "Celling";
+     description = "천장";
   }
 
   public int cost() {

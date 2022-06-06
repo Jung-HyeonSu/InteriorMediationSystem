@@ -15,7 +15,7 @@ class Red extends CondimentDecorator {
   }
 
   public String getDescription() {
-      return color.getDescription() + ", Red";
+      return color.getDescription()+ "\t빨간색";
   }
 
   public int cost() {

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 class Wall extends Color {
   public Wall() {
-      description = "Wall";
+      description = "벽";
   }
 
   public int cost() {

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 class Window extends Color {
   public Window() {
-            description = "Window";
+            description = "창문";
   }
 
   public int cost() {

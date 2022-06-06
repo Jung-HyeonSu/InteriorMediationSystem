@@ -1,7 +1,6 @@
 
 package deu.cse.team.decorator;
 
-import deu.cse.team.source.ColorInfo;
 import deu.cse.team.source.ConstructionInfo;
 import deu.cse.team.source.FileMgmt;
 import java.io.IOException;
@@ -9,7 +8,7 @@ import java.util.ArrayList;
 
 class Floor extends Color {
   public Floor() {
-    description = "Floor";
+    description = "바닥";
   }
 
   public int cost() {
