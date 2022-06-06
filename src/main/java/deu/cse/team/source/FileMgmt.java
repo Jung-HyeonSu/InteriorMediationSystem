@@ -237,7 +237,7 @@ public class FileMgmt implements FileInterface {
         for (int i = 0; i < readHousingTypeInfo.size(); i++) {
             line = readHousingTypeInfo.get(i);
             String[] str = line.split("\t");
-            housingtypeInfo.add(new HousingTypeInfo(str[0],str[1],str[2],str[3],str[4], str[5], str[6], str[7]));
+            housingtypeInfo.add(new HousingTypeInfo(str[0],str[1],str[2],str[3],str[4],str[5],str[6],str[7]));
         }
     }
     public void splitNoticeFileData() {

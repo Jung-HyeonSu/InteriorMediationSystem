@@ -17,6 +17,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 
@@ -418,7 +419,7 @@ public class PayGui extends javax.swing.JFrame {
                 payType = remoteControl.C_ButtonWasPushed(0);
             }
             
-            String str = String.format("%s", payType);
+            String str = String.format("%s\t%s", num, payType);
             ArrayList<TileInfo> paytypeInfo = new ArrayList<>();
             FileMgmt fileMgmt = new FileMgmt();
             try {
@@ -472,8 +473,8 @@ public class PayGui extends javax.swing.JFrame {
             String data;
             for (int i = 0; i < housingTypeInfo.size(); i++) {
                 if(!num.equals(housingTypeInfo.get(i).getNum())){
-                    String num;
-                    data = String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", housingTypeInfo.get(i).getNum(), 
+                    data = String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", 
+                            housingTypeInfo.get(i).getNum(), 
                             housingTypeInfo.get(i).getHousingtype(),
                             housingTypeInfo.get(i).getCeilingtype(),
                             housingTypeInfo.get(i).getFloortype(),
@@ -481,7 +482,6 @@ public class PayGui extends javax.swing.JFrame {
                             housingTypeInfo.get(i).getWindowtype(),
                             housingTypeInfo.get(i).getHeight(),
                             housingTypeInfo.get(i).getAflatnumber());
-                data = String.format("%s\t%s", estimateInfo.get(i).getId(), estimateInfo.get(i).getNum());
                 pw.println(data);
             }
         }
@@ -511,34 +511,6 @@ public class PayGui extends javax.swing.JFrame {
            Logger.getLogger(Notice.class.getName()).log(Level.SEVERE, null, ex);
         }
         */
-        
-        //Tile List 삭제
-        ArrayList<TileInfo> tileInfo = new ArrayList<>();
-        fileMgmt.readTileFileData("C:\\DB\\TileList.txt");
-        fileMgmt.splitTileFileData();
-        try {   
-            PrintWriter pw = new PrintWriter("C:\\DB\\TileList.txt");
-            tileInfo = fileMgmt.returnTileInfo();
-            String data;
-            for (int i = 0; i < tileInfo.size(); i++) {
-                if(!num.equals(tileInfo.get(i).getNum())){                           
-                data = String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s",
-                    tileInfo.get(i).getNum(),
-                    tileInfo.get(i).getMood(),
-                    tileInfo.get(i).getTexture(),
-                    tileInfo.get(i).getColor(),
-                    tileInfo.get(i).getShape(),
-                    tileInfo.get(i).getDesign(),
-                    tileInfo.get(i).getAmount());
-                pw.println(data);
-            }
-        }
-        pw.close();
-        } 
-        catch (IOException ex) {
-           Logger.getLogger(TileFactory.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
         
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed

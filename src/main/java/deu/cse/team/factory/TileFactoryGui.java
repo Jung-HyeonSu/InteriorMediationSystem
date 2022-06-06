@@ -217,7 +217,7 @@ public class TileFactoryGui extends javax.swing.JFrame {
                 Logger.getLogger(TileFactoryGui.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            PayGui payGui = new PayGui();
+            PayGui payGui = new PayGui(num);
             payGui.setVisible(true);     
             dispose();
             
@@ -243,7 +243,7 @@ public class TileFactoryGui extends javax.swing.JFrame {
                 Logger.getLogger(TileFactoryGui.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            PayGui payGui = new PayGui();
+            PayGui payGui = new PayGui(num);
             payGui.setVisible(true);     
             dispose();
 
@@ -315,8 +315,8 @@ public class TileFactoryGui extends javax.swing.JFrame {
             String data;
             for (int i = 0; i < housingTypeInfo.size(); i++) {
                 if(!num.equals(housingTypeInfo.get(i).getNum())){
-                    String num;
-                    data = String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", housingTypeInfo.get(i).getNum(), 
+                    data = String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", 
+                            housingTypeInfo.get(i).getNum(), 
                             housingTypeInfo.get(i).getHousingtype(),
                             housingTypeInfo.get(i).getCeilingtype(),
                             housingTypeInfo.get(i).getFloortype(),
@@ -324,7 +324,6 @@ public class TileFactoryGui extends javax.swing.JFrame {
                             housingTypeInfo.get(i).getWindowtype(),
                             housingTypeInfo.get(i).getHeight(),
                             housingTypeInfo.get(i).getAflatnumber());
-                data = String.format("%s\t%s", estimateInfo.get(i).getId(), estimateInfo.get(i).getNum());
                 pw.println(data);
             }
         }
