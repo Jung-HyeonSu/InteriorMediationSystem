@@ -4,18 +4,42 @@
  */
 package deu.cse.team.command;
 
+import deu.cse.team.factory.TileFactoryGui;
+import deu.cse.team.source.FileMgmt;
+import deu.cse.team.source.TileInfo;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static javax.swing.JOptionPane.showMessageDialog;
+
 
 /**
  *
  * @author PC
  */
-public class Pay extends javax.swing.JFrame {
+public class PayGui extends javax.swing.JFrame {
 
+    RemoteControl remoteControl = new RemoteControl();
+        
+    PaymentType paymentType = new PaymentType();
+    PaymentConfirm paymentConfirm = new PaymentConfirm();
+        
+    PayTypeCashCommand payTypeCash = new PayTypeCashCommand(paymentType);
+    PayTypeCheckCardCommand payTypeCheckCard = new PayTypeCheckCardCommand(paymentType);
+    PayTypeCreditCardCommand payTypeCreditCard = new PayTypeCreditCardCommand(paymentType);
+    
+        
+    PayConfirmOkCommand payConfirmOkCommnad = new PayConfirmOkCommand(paymentConfirm);
+    PayConfirmCancelCommand payConfirmCancelCommnad = new PayConfirmCancelCommand(paymentConfirm);
     /**
      * Creates new form Pay
      */
-    public Pay() {
+    public PayGui() {
         initComponents();
+       
+        remoteControl.setCommand(0, payTypeCash, payTypeCheckCard, payTypeCreditCard);
+        remoteControl.setCommand(1, payConfirmOkCommnad, payConfirmCancelCommnad);
     }
 
     /**
@@ -124,8 +148,18 @@ public class Pay extends javax.swing.JFrame {
         jLabel16.setText("-");
 
         jButton2.setText("등록");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("취소");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -249,6 +283,11 @@ public class Pay extends javax.swing.JFrame {
         });
 
         jButton5.setText("취소");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -349,38 +388,50 @@ public class Pay extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        RemoteControl remoteControl = new RemoteControl();
         
-        PaymentType paymentType = new PaymentType();
-        PaymentConfirm paymentConfirm = new PaymentConfirm();
+        String payType = "";
         
-        PayTypeCashCommand payTypeCash = new PayTypeCashCommand(paymentType);
-        PayTypeCreditCardCommand payTypeCreditCard = new PayTypeCreditCardCommand(paymentType);
-        PayTypeCheckCardCommand payTypeCheckCard = new PayTypeCheckCardCommand(paymentType);
+        if("ok".equals(remoteControl.A_ButtonWasPushed(1))){
+            if(jRadioButton6.isSelected()){
+                payType = remoteControl.A_ButtonWasPushed(0);
+            }
+            else if(jRadioButton5.isSelected()){
+                payType = remoteControl.B_ButtonWasPushed(0);
+            }
+            else if(jRadioButton4.isSelected()){
+                payType = remoteControl.C_ButtonWasPushed(0);
+            }
+            
+            String str = String.format("%s", payType);
+            ArrayList<TileInfo> paytypeInfo = new ArrayList<>();
+            FileMgmt fileMgmt = new FileMgmt();
+            try {
+                fileMgmt.writeFileData("C:\\DB\\PayTypeList.txt", str);
+            } catch (IOException ex) {
+                Logger.getLogger(PayGui.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            showMessageDialog(null,"결제완료");
+        }
         
-        PayConfirmOkCommand payConfirmOkCommnad = new PayConfirmOkCommand(paymentConfirm);
-        PayConfirmCancelCommand payConfirmCancelCommnad = new PayConfirmCancelCommand(paymentConfirm);
-        
-        
-        remoteControl.setCommand(0, payTypeCash, payTypeCreditCard, payTypeCheckCard);
-        remoteControl.setCommand(1, payConfirmOkCommnad, payConfirmCancelCommnad);
-        
-        
-        
-        
-        
-        
-        
-        //결제수단 선택
-        remoteControl.A_ButtonWasPushed(0); //현금
-        remoteControl.B_ButtonWasPushed(0); //신용카드
-        remoteControl.C_ButtonWasPushed(0); //체크카드
-        
-        //결제 확정 
-        remoteControl.A_ButtonWasPushed(1); //확인
-        remoteControl.B_ButtonWasPushed(1); //취소
+        dispose();
         
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        if("cancel".equals(remoteControl.B_ButtonWasPushed(1))){
+            showMessageDialog(null,"결제 취소하셨습니다.");
+        }
+        dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        jDialog1.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        jDialog1.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -399,20 +450,21 @@ public class Pay extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Pay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PayGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Pay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PayGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Pay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PayGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Pay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PayGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Pay().setVisible(true);
+                new PayGui().setVisible(true);
             }
         });
     }

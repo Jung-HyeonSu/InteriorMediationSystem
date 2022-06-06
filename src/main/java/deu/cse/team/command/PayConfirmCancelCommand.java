@@ -16,7 +16,8 @@ public class PayConfirmCancelCommand implements Command{
     }
     
     @Override
-    public void execute(){
+    public String execute(){
         paymentConfirm.Cancel();
+        return "cancel";
     }
 }

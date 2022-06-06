@@ -9,9 +9,9 @@ public class RemoteControl {
         Command[] C_Commands;
  
 	public RemoteControl() {
-		A_Commands = new Command[1];
-		B_Commands = new Command[1];
-                C_Commands = new Command[1];
+		A_Commands = new Command[2];
+		B_Commands = new Command[2];
+                C_Commands = new Command[2];
  
 		Command noCommand = new NoCommand();
 		for (int i = 0; i < 1; i++) {
@@ -33,16 +33,16 @@ public class RemoteControl {
 	}
         
         
-	public void A_ButtonWasPushed(int slot) {
-		A_Commands[slot].execute();
+	public String A_ButtonWasPushed(int slot) {
+		return A_Commands[slot].execute();
 	}
  
-	public void B_ButtonWasPushed(int slot) {
-		B_Commands[slot].execute();
+	public String B_ButtonWasPushed(int slot) {
+		return B_Commands[slot].execute();
 	}
         
-        public void C_ButtonWasPushed(int slot) {
-		C_Commands[slot].execute();
+        public String C_ButtonWasPushed(int slot) {
+		return C_Commands[slot].execute();
 	}
   
 }

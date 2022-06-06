@@ -16,8 +16,9 @@ public class PayTypeCheckCardCommand implements Command{
     }
     
     @Override
-    public void execute(){
+    public String execute(){
         paymentType.CheckCard();
+        return "CheckCard";
     }
 }
 

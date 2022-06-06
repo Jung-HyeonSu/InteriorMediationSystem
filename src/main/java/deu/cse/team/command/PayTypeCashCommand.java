@@ -17,8 +17,9 @@ public class PayTypeCashCommand implements Command{
     }
     
     @Override
-    public void execute(){
+    public String execute(){
         paymentType.Cash();
+        return "Cash";
     }
     
 }
