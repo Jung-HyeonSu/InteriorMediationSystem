@@ -26,6 +26,7 @@ public class FileMgmt implements FileInterface {
     ArrayList<String> readHousingTypeInfo = new ArrayList();
     ArrayList<String> readNoticeInfo = new ArrayList();
     ArrayList<String> readTileInfo = new ArrayList();
+    ArrayList<String> readPayTypeInfo = new ArrayList();
     
     ArrayList<UserInfo> userInfo = new ArrayList<>();
     ArrayList<AdminInfo> adminInfo = new ArrayList<>();
@@ -34,6 +35,7 @@ public class FileMgmt implements FileInterface {
     ArrayList<HousingTypeInfo> housingtypeInfo = new ArrayList();
     ArrayList<NoticeInfo> noticeInfo = new ArrayList();
     ArrayList<TileInfo> tileInfo = new ArrayList();
+    ArrayList<PayTypeInfo> paytypeInfo = new ArrayList();
     
     @Override
     public void readFileData(String path) {
@@ -134,6 +136,21 @@ public class FileMgmt implements FileInterface {
             e.printStackTrace();
         }
     }
+     public void readPayTypeFileData(String path) {
+        try {
+            BufferedReader bfReader = new BufferedReader(new FileReader(new File(path)));
+            String line = "";
+            while ((line = bfReader.readLine()) != null) {
+                readPayTypeInfo.add(line);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("파일이 존재하지않습니다. 경로를 확인해주세요");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     
     @Override
     public void writeFileData(String path, String data) throws IOException {
@@ -207,6 +224,17 @@ public class FileMgmt implements FileInterface {
             tileInfo.add(new TileInfo(str[0], str[1], str[2], str[3], str[4], str[5]));
         }
     }
+    public void splitPayTypeFileData() {
+        String line;
+
+        for (int i = 0; i < readPayTypeInfo.size(); i++) {
+            line = readPayTypeInfo.get(i);
+            String[] str = line.split("\t");
+            paytypeInfo.add(new PayTypeInfo(str[0]));
+        }
+    }
+    
+    
     
     public ArrayList<UserInfo> returnUserInfo() throws IOException {
         return userInfo;
@@ -231,5 +259,8 @@ public class FileMgmt implements FileInterface {
     }
     public ArrayList<TileInfo> returnTileInfo() throws IOException {
         return tileInfo;
+    } 
+    public ArrayList<PayTypeInfo> returnPayTypeInfo() throws IOException {
+        return paytypeInfo;
     }
 }
