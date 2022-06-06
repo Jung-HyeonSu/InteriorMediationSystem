@@ -10,6 +10,7 @@ import deu.cse.team.observer.Notice;
 import deu.cse.team.source.EstimateInfo;
 import deu.cse.team.source.FileMgmt;
 import deu.cse.team.source.HousingTypeInfo;
+import deu.cse.team.source.PaintInfo;
 import deu.cse.team.source.TileInfo;
 import deu.cse.team.strategy.HousingTypeGui;
 import java.io.IOException;
@@ -192,7 +193,7 @@ public class TileFactoryGui extends javax.swing.JFrame {
         boolean isNumeric =  amount.matches("[+-]?\\d*(\\.\\d+)?");
         
         if("--선택--".equals(moodType) || "--선택--".equals(textureType)) {            
-            showMessageDialog(null,"모든 항목을 선택해주세요.");
+            
         }
         else if (!isNumeric){
             showMessageDialog(null,"수량에 숫자만 입력해주세요.");
@@ -217,10 +218,6 @@ public class TileFactoryGui extends javax.swing.JFrame {
                 Logger.getLogger(TileFactoryGui.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            PayGui payGui = new PayGui(num);
-            payGui.setVisible(true);     
-            dispose();
-            
         }
         
         else if ("시원한".equals(moodType)) {
@@ -242,11 +239,7 @@ public class TileFactoryGui extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(TileFactoryGui.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            PayGui payGui = new PayGui(num);
-            payGui.setVisible(true);     
-            dispose();
-
+          
         }
         
         else if ("따듯한".equals(moodType)) {
@@ -268,20 +261,12 @@ public class TileFactoryGui extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(TileFactoryGui.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            PayGui payGui = new PayGui(num);
-            payGui.setVisible(true);     
-            dispose();
-
         }
-        
-        
-        
+   
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-        
         
         
         //Estimate 삭제
@@ -302,7 +287,7 @@ public class TileFactoryGui extends javax.swing.JFrame {
         pw.close();
         } 
         catch (IOException ex) {
-           Logger.getLogger(UserMainMenu.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(TileFactoryGui.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         //HousingType 삭제
@@ -330,32 +315,30 @@ public class TileFactoryGui extends javax.swing.JFrame {
         pw.close();
         } 
         catch (IOException ex) {
-           Logger.getLogger(HousingTypeGui.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(TileFactoryGui.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         //paint 삭제
-        /*ArrayList<EstimateInfo> estimateInfo = new ArrayList<>();
-        fileMgmt.readEstimateFileData("C:\\DB\\EstimateList.txt");
-        fileMgmt.splitEstimateFileData();
+        ArrayList<PaintInfo> paintInfo = new ArrayList<>();
+        fileMgmt.readPaintFileData("C:\\DB\\Paint.txt");
+        fileMgmt.splitPaintFileData();
         try {   
-            PrintWriter pw = new PrintWriter("C:\\DB\\EstimateList.txt");
-            estimateInfo = fileMgmt.returnEstimateInfo();
+            PrintWriter pw = new PrintWriter("C:\\DB\\Paint.txt");
+            paintInfo = fileMgmt.returnPaintInfo();
             String data;
-            for (int i = 0; i < estimateInfo.size(); i++) {
-                if(!num.equals(estimateInfo.get(i).getNum())){
-                data = String.format("%s\t%s", estimateInfo.get(i).getId(), estimateInfo.get(i).getNum());
+            for (int i = 0; i < paintInfo.size(); i++) {
+                if(!num.equals(paintInfo.get(i).getNum())){
+                data = String.format("%s\t%s\t%s\t%s", paintInfo.get(i).getNum(), paintInfo.get(i).getType(),paintInfo.get(i).getColor(),paintInfo.get(i).getMoney());
                 pw.println(data);
             }
         }
         pw.close();
         } 
         catch (IOException ex) {
-           Logger.getLogger(Notice.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(TileFactoryGui.class.getName()).log(Level.SEVERE, null, ex);
         }
-        */
-        
+    
         dispose();
-        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
