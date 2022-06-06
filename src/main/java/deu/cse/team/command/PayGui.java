@@ -5,8 +5,10 @@
 package deu.cse.team.command;
 
 import deu.cse.team.factory.TileFactoryGui;
+import deu.cse.team.mainmenu.UserMainMenu;
 import deu.cse.team.source.FileMgmt;
 import deu.cse.team.source.TileInfo;
+import deu.cse.team.strategy.HousingTypeGui;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -414,6 +416,8 @@ public class PayGui extends javax.swing.JFrame {
             showMessageDialog(null,"결제완료");
         }
         
+        UserMainMenu userMainMenu = new UserMainMenu();
+        userMainMenu.setVisible(true);     
         dispose();
         
     }//GEN-LAST:event_jButton4ActionPerformed

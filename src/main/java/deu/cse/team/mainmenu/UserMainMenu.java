@@ -4,9 +4,20 @@
  */
 package deu.cse.team.mainmenu;
 
+import deu.cse.team.command.PayGui;
 import deu.cse.team.login.Login;
 import deu.cse.team.observer.UserNotice;
+import deu.cse.team.source.EstimateInfo;
+import deu.cse.team.source.FileMgmt;
+import deu.cse.team.source.TileInfo;
 import deu.cse.team.strategy.HousingTypeGui;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.LineNumberReader;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,6 +32,8 @@ public class UserMainMenu extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(this);
         setTitle("UserMain");  
+        
+        
     }
 
     /**
@@ -38,6 +51,7 @@ public class UserMainMenu extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         SignOutButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,6 +84,13 @@ public class UserMainMenu extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("견적서 확인");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -91,7 +112,8 @@ public class UserMainMenu extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(152, 152, 152))))
         );
         layout.setVerticalGroup(
@@ -105,7 +127,9 @@ public class UserMainMenu extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
+                .addGap(42, 42, 42)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(16, 16, 16)
                 .addComponent(SignOutButton)
@@ -122,8 +146,33 @@ public class UserMainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_SignOutButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
+        int num = 0;
+        String id = jLabel3.getText();
+        
+        try {
+            LineNumberReader reader = new LineNumberReader(new FileReader("C:\\DB\\EstimateList.txt"));
+            while (reader.readLine() != null);
+            num = reader.getLineNumber() + 1;
+        }
+        catch (IOException ex) {
+            Logger.getLogger(UserMainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-        new HousingTypeGui().setVisible(true);        
+        
+        String str = String.format("%s\t%s", id, Integer.toString(num));
+        ArrayList<EstimateInfo> estimateInfo = new ArrayList<>();
+        FileMgmt fileMgmt = new FileMgmt();
+        try {
+            fileMgmt.writeFileData("C:\\DB\\EstimateList.txt", str);
+        } catch (IOException ex) {
+            Logger.getLogger(UserMainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        HousingTypeGui housingTypeGui = new HousingTypeGui(Integer.toString(num));
+        housingTypeGui.setVisible(true);     
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -133,6 +182,10 @@ public class UserMainMenu extends javax.swing.JFrame {
         usernotice.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,6 +226,7 @@ public class UserMainMenu extends javax.swing.JFrame {
     private javax.swing.JButton SignOutButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     public javax.swing.JLabel jLabel3;

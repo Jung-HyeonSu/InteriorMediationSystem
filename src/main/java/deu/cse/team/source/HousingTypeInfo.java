@@ -9,18 +9,28 @@ package deu.cse.team.source;
  * @author 915
  */
 public class HousingTypeInfo {
+    String num;
     String housingtype;
     String walltype;
     String windowtype;
     String floortype;
     String ceilingtype;
 
-    public HousingTypeInfo(String housingtype, String ceilingtype, String floortype, String walltype, String windowtype){
+    public HousingTypeInfo(String num, String housingtype, String ceilingtype, String floortype, String walltype, String windowtype){
+        this.num = num;
         this.housingtype = housingtype;
         this.ceilingtype = ceilingtype;
         this.floortype = floortype;
         this.walltype = walltype;
         this.windowtype = windowtype;
+    }
+
+    public String getNum() {
+        return num;
+    }
+
+    public void setNum(String num) {
+        this.num = num;
     }
     
     public String getHousingtype() {

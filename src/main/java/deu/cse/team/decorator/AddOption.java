@@ -4,8 +4,10 @@
  */
 package deu.cse.team.decorator;
 
+import deu.cse.team.factory.TileFactoryGui;
 import deu.cse.team.source.ColorInfo;
 import deu.cse.team.source.FileMgmt;
+import deu.cse.team.strategy.HousingTypeGui;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -242,6 +244,11 @@ public class AddOption extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, color4.getDescription() + color4.cost() + "원");
             }
         }
+        
+        
+        TileFactoryGui tileFactoryGui = new TileFactoryGui();
+        tileFactoryGui.setVisible(true);     
+        dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void loadColorData(){

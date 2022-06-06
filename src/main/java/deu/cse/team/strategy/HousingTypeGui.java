@@ -1,5 +1,7 @@
 package deu.cse.team.strategy;
 
+import deu.cse.team.decorator.AddOption;
+import deu.cse.team.factory.TileFactoryGui;
 import deu.cse.team.source.FileMgmt;
 import deu.cse.team.source.HousingTypeInfo;
 import java.io.IOException;
@@ -24,10 +26,20 @@ public class HousingTypeGui extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    String num;
+    
     public HousingTypeGui() {
         initComponents();
         setLocationRelativeTo(this);
         setTitle("HousingType Select");
+    }
+    
+    public HousingTypeGui(String num) {
+        initComponents();
+        setLocationRelativeTo(this);
+        setTitle("HousingType Select");
+        
+        this.num = num;
     }
 
     /**
@@ -211,13 +223,13 @@ public class HousingTypeGui extends javax.swing.JFrame {
                         .addComponent(jButtonOk)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 131, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jComboBoxType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(124, 124, 124))
             .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
+                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel14)
@@ -230,7 +242,7 @@ public class HousingTypeGui extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField1)
-                            .addComponent(jComboBoxCeilingBh2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jComboBoxCeilingBh2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
@@ -243,9 +255,9 @@ public class HousingTypeGui extends javax.swing.JFrame {
                             .addComponent(jLabel17))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField2)
-                            .addComponent(jComboBoxFloorBh2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(65, Short.MAX_VALUE))
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxFloorBh2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,7 +268,7 @@ public class HousingTypeGui extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -275,7 +287,7 @@ public class HousingTypeGui extends javax.swing.JFrame {
                         .addComponent(jComboBoxWallBh2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel14))
                     .addComponent(jComboBoxWindowBh2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
+                .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonOk)
                     .addComponent(jButtonCancel))
@@ -412,7 +424,7 @@ public class HousingTypeGui extends javax.swing.JFrame {
         }
         else if("--선택--".equals(jComboBoxWindowBh2.getSelectedItem().toString())) {
             showMessageDialog(null,"창문 변경 여부를 선택해주세요.");
-        }       
+        }          
         else {
             String htype = jComboBoxType.getSelectedItem().toString();
             String ceiling = jComboBoxCeilingBh2.getSelectedItem().toString();
@@ -421,7 +433,9 @@ public class HousingTypeGui extends javax.swing.JFrame {
             String window = jComboBoxWindowBh2.getSelectedItem().toString();
             String height = jTextField1.getText();
             String aflatnumber = jTextField2.getText();
-            String str = String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s", htype, ceiling, floor, wall, window, height, aflatnumber);
+            
+            
+            String str = String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", num, htype, ceiling, floor, wall, window, height, aflatnumber);
             
             ArrayList<HousingTypeInfo> housingtypeInfo = new ArrayList<>();
             
@@ -432,9 +446,10 @@ public class HousingTypeGui extends javax.swing.JFrame {
                 Logger.getLogger(HousingTypeGui.class.getName()).log(Level.SEVERE, null, ex);
             }
             
+            AddOption addOption = new AddOption();
+            addOption.setVisible(true);     
             dispose();
         }
-   
     }//GEN-LAST:event_jButtonOkActionPerformed
 
     //취소버튼

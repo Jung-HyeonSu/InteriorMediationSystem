@@ -4,6 +4,7 @@
  */
 package deu.cse.team.factory;
 
+import deu.cse.team.command.PayGui;
 import deu.cse.team.source.FileMgmt;
 import deu.cse.team.source.TileInfo;
 import java.io.IOException;
@@ -21,10 +22,14 @@ public class TileFactoryGui extends javax.swing.JFrame {
     /**
      * Creates new form TileFactoryGui
      */
-    public TileFactoryGui() {
+    public TileFactoryGui(int num) {
         initComponents();
         setLocationRelativeTo(this);
         setTitle("TileFactory Select");
+    }
+
+    public TileFactoryGui() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -201,8 +206,9 @@ public class TileFactoryGui extends javax.swing.JFrame {
                 Logger.getLogger(TileFactoryGui.class.getName()).log(Level.SEVERE, null, ex);
             }
             
+            PayGui payGui = new PayGui();
+            payGui.setVisible(true);     
             dispose();
-
             
         }
         
@@ -226,6 +232,8 @@ public class TileFactoryGui extends javax.swing.JFrame {
                 Logger.getLogger(TileFactoryGui.class.getName()).log(Level.SEVERE, null, ex);
             }
             
+            PayGui payGui = new PayGui();
+            payGui.setVisible(true);     
             dispose();
 
         }
@@ -239,7 +247,7 @@ public class TileFactoryGui extends javax.swing.JFrame {
             String shape = tile.shape.toString();
             String design = tile.design.toString();
             
-             String str = String.format("%s\t%s\t%s\t%s\t%s\t%s", moodType, textureType, color, shape, design, amount);
+            String str = String.format("%s\t%s\t%s\t%s\t%s\t%s", moodType, textureType, color, shape, design, amount);
             
             ArrayList<TileInfo> tileInfo = new ArrayList<>();
             
@@ -250,6 +258,8 @@ public class TileFactoryGui extends javax.swing.JFrame {
                 Logger.getLogger(TileFactoryGui.class.getName()).log(Level.SEVERE, null, ex);
             }
             
+            PayGui payGui = new PayGui();
+            payGui.setVisible(true);     
             dispose();
 
         }

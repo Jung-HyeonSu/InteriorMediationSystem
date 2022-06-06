@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.LineNumberReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 /**
@@ -27,6 +28,7 @@ public class FileMgmt implements FileInterface {
     ArrayList<String> readNoticeInfo = new ArrayList();
     ArrayList<String> readTileInfo = new ArrayList();
     ArrayList<String> readPayTypeInfo = new ArrayList();
+    ArrayList<String> readEstimateInfo = new ArrayList();
     
     ArrayList<UserInfo> userInfo = new ArrayList<>();
     ArrayList<AdminInfo> adminInfo = new ArrayList<>();
@@ -36,6 +38,7 @@ public class FileMgmt implements FileInterface {
     ArrayList<NoticeInfo> noticeInfo = new ArrayList();
     ArrayList<TileInfo> tileInfo = new ArrayList();
     ArrayList<PayTypeInfo> paytypeInfo = new ArrayList();
+    ArrayList<EstimateInfo> estimateInfo = new ArrayList();
     
     @Override
     public void readFileData(String path) {
@@ -150,7 +153,20 @@ public class FileMgmt implements FileInterface {
             e.printStackTrace();
         }
     }
-    
+    public void readEstimateFileData(String path) {
+        try {
+            BufferedReader bfReader = new BufferedReader(new FileReader(new File(path)));
+            String line = "";
+            while ((line = bfReader.readLine()) != null) {
+                readEstimateInfo.add(line);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("파일이 존재하지않습니다. 경로를 확인해주세요");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
     @Override
     public void writeFileData(String path, String data) throws IOException {
@@ -159,6 +175,7 @@ public class FileMgmt implements FileInterface {
         pw.flush();
         pw.close();
     }
+
     
     @Override
     public void splitFileData() {
@@ -203,7 +220,7 @@ public class FileMgmt implements FileInterface {
         for (int i = 0; i < readHousingTypeInfo.size(); i++) {
             line = readHousingTypeInfo.get(i);
             String[] str = line.split("\t");
-            housingtypeInfo.add(new HousingTypeInfo(str[0],str[1],str[2],str[3],str[4]));
+            housingtypeInfo.add(new HousingTypeInfo(str[0],str[1],str[2],str[3],str[4], str[5]));
         }
     }
     public void splitNoticeFileData() {
@@ -233,7 +250,15 @@ public class FileMgmt implements FileInterface {
             paytypeInfo.add(new PayTypeInfo(str[0]));
         }
     }
-    
+    public void splitEstimateFileData() {
+        String line;
+
+        for (int i = 0; i < readEstimateInfo.size(); i++) {
+            line = readEstimateInfo.get(i);
+            String[] str = line.split("\t");
+            estimateInfo.add(new EstimateInfo(str[0], str[1]));
+        }
+    }
     
     
     public ArrayList<UserInfo> returnUserInfo() throws IOException {
@@ -262,5 +287,8 @@ public class FileMgmt implements FileInterface {
     } 
     public ArrayList<PayTypeInfo> returnPayTypeInfo() throws IOException {
         return paytypeInfo;
+    }
+    public ArrayList<EstimateInfo> returnEstimateInfo() throws IOException {
+        return estimateInfo;
     }
 }
