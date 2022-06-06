@@ -15,14 +15,19 @@ public class HousingTypeInfo {
     String windowtype;
     String floortype;
     String ceilingtype;
+    String height;
+    String aflatnumber;
 
-    public HousingTypeInfo(String num, String housingtype, String ceilingtype, String floortype, String walltype, String windowtype){
+
+    public HousingTypeInfo(String num, String housingtype, String ceilingtype, String floortype, String walltype, String windowtype, String height, String aflatnumber){
         this.num = num;
         this.housingtype = housingtype;
         this.ceilingtype = ceilingtype;
         this.floortype = floortype;
         this.walltype = walltype;
         this.windowtype = windowtype;
+        this.height = height;
+        this.aflatnumber = aflatnumber;
     }
 
     public String getNum() {
@@ -32,7 +37,7 @@ public class HousingTypeInfo {
     public void setNum(String num) {
         this.num = num;
     }
-    
+
     public String getHousingtype() {
         return housingtype;
     }
@@ -72,6 +77,23 @@ public class HousingTypeInfo {
     public void setCeilingtype(String ceilingtype) {
         this.ceilingtype = ceilingtype;
     }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public void setHeight(String height) {
+        this.height = height;
+    }
+
+    public String getAflatnumber() {
+        return aflatnumber;
+    }
+
+    public void setAflatnumber(String aflatnumber) {
+        this.aflatnumber = aflatnumber;
+    }
+
     
     
 }
