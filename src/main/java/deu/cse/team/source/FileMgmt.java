@@ -238,7 +238,7 @@ public class FileMgmt implements FileInterface {
         for (int i = 0; i < readTileInfo.size(); i++) {
             line = readTileInfo.get(i);
             String[] str = line.split("\t");
-            tileInfo.add(new TileInfo(str[0], str[1], str[2], str[3], str[4], str[5]));
+            tileInfo.add(new TileInfo(str[0], str[1], str[2], str[3], str[4], str[5], str[6]));
         }
     }
     public void splitPayTypeFileData() {
@@ -247,7 +247,7 @@ public class FileMgmt implements FileInterface {
         for (int i = 0; i < readPayTypeInfo.size(); i++) {
             line = readPayTypeInfo.get(i);
             String[] str = line.split("\t");
-            paytypeInfo.add(new PayTypeInfo(str[0]));
+            paytypeInfo.add(new PayTypeInfo(str[0], str[1]));
         }
     }
     public void splitEstimateFileData() {

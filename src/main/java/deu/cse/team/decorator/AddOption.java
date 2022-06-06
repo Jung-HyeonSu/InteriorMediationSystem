@@ -22,10 +22,20 @@ public class AddOption extends javax.swing.JFrame {
     /**
      * Creates new form Color
      */
+    
+    String num;
+    
     public AddOption() {
         initComponents();
         loadColorData();
     }
+    
+    public AddOption(String num) {
+        initComponents();
+        loadColorData();
+        this.num = num;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -246,7 +256,7 @@ public class AddOption extends javax.swing.JFrame {
         }
         
         
-        TileFactoryGui tileFactoryGui = new TileFactoryGui();
+        TileFactoryGui tileFactoryGui = new TileFactoryGui(num);
         tileFactoryGui.setVisible(true);     
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed

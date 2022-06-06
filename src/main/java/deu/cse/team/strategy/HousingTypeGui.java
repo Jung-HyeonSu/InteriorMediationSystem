@@ -446,7 +446,7 @@ public class HousingTypeGui extends javax.swing.JFrame {
                 Logger.getLogger(HousingTypeGui.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            AddOption addOption = new AddOption();
+            AddOption addOption = new AddOption(num);
             addOption.setVisible(true);     
             dispose();
         }

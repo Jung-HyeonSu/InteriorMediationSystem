@@ -9,6 +9,7 @@ package deu.cse.team.source;
  * @author Yool
  */
 public class TileInfo {
+    String num;
     String mood;
     String texture;
     String color;
@@ -16,13 +17,22 @@ public class TileInfo {
     String design;
     String amount;
     
-     public TileInfo(String mood, String texture, String color, String shape, String design, String amount){
+     public TileInfo(String num, String mood, String texture, String color, String shape, String design, String amount){
+        this.num = num;
         this.mood = mood;
         this.texture = texture;
         this.color = color;
         this.shape = shape;
         this.design = design;
         this.amount = amount;
+    }
+
+    public String getNum() {
+        return num;
+    }
+
+    public void setNum(String num) {
+        this.num = num;
     }
 
     public String getAmount() {

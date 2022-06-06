@@ -9,10 +9,21 @@ package deu.cse.team.source;
  * @author Yool
  */
 public class PayTypeInfo {
+    
+    String num;
     String paytype;
     
-     public PayTypeInfo(String paytype){
+     public PayTypeInfo(String num, String paytype){
+        this.num = num;
         this.paytype = paytype;
+    }
+
+    public String getNum() {
+        return num;
+    }
+
+    public void setNum(String num) {
+        this.num = num;
     }
 
     public String getPaytype() {
