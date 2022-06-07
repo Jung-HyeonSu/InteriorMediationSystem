@@ -76,7 +76,16 @@ public class EstimateConfirm extends javax.swing.JFrame {
         jTextField12 = new javax.swing.JTextField();
         jTextField13 = new javax.swing.JTextField();
         jTextField14 = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
         jDialog3 = new javax.swing.JDialog();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jTextField15 = new javax.swing.JTextField();
+        jTextField16 = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jSeparator2 = new javax.swing.JSeparator();
+        jButton7 = new javax.swing.JButton();
         jDialog4 = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -117,6 +126,11 @@ public class EstimateConfirm extends javax.swing.JFrame {
         });
 
         jButton4.setText("상세보기");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("상세보기");
 
@@ -238,41 +252,46 @@ public class EstimateConfirm extends javax.swing.JFrame {
         jDialog2.getContentPane().setLayout(jDialog2Layout);
         jDialog2Layout.setHorizontalGroup(
             jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog2Layout.createSequentialGroup()
-                .addContainerGap(72, Short.MAX_VALUE)
+            .addGroup(jDialog2Layout.createSequentialGroup()
+                .addContainerGap(44, Short.MAX_VALUE)
                 .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialog2Layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton6)
-                        .addGroup(jDialog2Layout.createSequentialGroup()
-                            .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel11)
-                                .addComponent(jLabel13)
-                                .addComponent(jLabel15))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(80, 80, 80)
-                            .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog2Layout.createSequentialGroup()
+                        .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jDialog2Layout.createSequentialGroup()
+                                .addGap(75, 75, 75)
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jButton6)
                                 .addGroup(jDialog2Layout.createSequentialGroup()
-                                    .addComponent(jLabel12)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jDialog2Layout.createSequentialGroup()
-                                    .addComponent(jLabel14)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jDialog2Layout.createSequentialGroup()
-                                    .addComponent(jLabel16)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(70, 70, 70))
+                                    .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel11)
+                                        .addComponent(jLabel13)
+                                        .addComponent(jLabel15))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(80, 80, 80)
+                                    .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(jDialog2Layout.createSequentialGroup()
+                                            .addComponent(jLabel12)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jDialog2Layout.createSequentialGroup()
+                                            .addComponent(jLabel14)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jDialog2Layout.createSequentialGroup()
+                                            .addComponent(jLabel16)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(70, 70, 70))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog2Layout.createSequentialGroup()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48))))
         );
         jDialog2Layout.setVerticalGroup(
             jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -281,7 +300,9 @@ public class EstimateConfirm extends javax.swing.JFrame {
                 .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
                 .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDialog2Layout.createSequentialGroup()
                         .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -312,15 +333,63 @@ public class EstimateConfirm extends javax.swing.JFrame {
                 .addGap(21, 21, 21))
         );
 
+        jLabel17.setText("재질:");
+
+        jLabel18.setText("느낌:");
+
+        jTextField15.setEditable(false);
+
+        jTextField16.setEditable(false);
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setAutoscrolls(false);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        jButton7.setText("취소");
+
         javax.swing.GroupLayout jDialog3Layout = new javax.swing.GroupLayout(jDialog3.getContentPane());
         jDialog3.getContentPane().setLayout(jDialog3Layout);
         jDialog3Layout.setHorizontalGroup(
             jDialog3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jDialog3Layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jDialog3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSeparator2)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog3Layout.createSequentialGroup()
+                .addContainerGap(43, Short.MAX_VALUE)
+                .addGroup(jDialog3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton7)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33))
         );
         jDialog3Layout.setVerticalGroup(
             jDialog3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jDialog3Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jDialog3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel18)
+                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton7)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jDialog4Layout = new javax.swing.GroupLayout(jDialog4.getContentPane());
@@ -423,6 +492,13 @@ public class EstimateConfirm extends javax.swing.JFrame {
         jDialog2.setLocationRelativeTo(this);
         jDialog2.setSize(450, 300);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        jDialog3.setVisible(true);
+        jDialog3.setLocationRelativeTo(this);
+        jDialog3.setSize(400, 300);
+    }//GEN-LAST:event_jButton4ActionPerformed
     private void loadEstimateData(){
         ArrayList<EstimateInfo> estimateInfo = new ArrayList<>();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -457,7 +533,15 @@ public class EstimateConfirm extends javax.swing.JFrame {
         String houseTypeWall = null; //벽
         String houseTypeWindow = null; //창문
         
-        String tilePrice = null; // 타일
+        String tileTexture = "선택 안함"; //재질
+        String tileMood = "선택 안함"; //느낌
+        String tileColor = "선택 안함"; //색상
+        String tileShape = "선택 안함"; //모양
+        String tileDesign = "선택 안함"; //디자인
+        String tileAmount = "선택 안함"; //수량
+        String tilePrice = "선택 안함"; // 타일 총 가격
+        
+        
         String paintPrice = null; // 페인트
         
         ArrayList<HousingTypeInfo> housingTypeInfo = new ArrayList<>();
@@ -471,7 +555,7 @@ public class EstimateConfirm extends javax.swing.JFrame {
             housingTypeInfo = fileMgmt.returnHousingTypeInfo();
             for (int i = 0; i < housingTypeInfo.size(); i++) {
                 if(num.equals(housingTypeInfo.get(i).getNum())){ // 주문서 번호와 같은 경우
-                    houseType = housingTypeInfo.get(i).getHousingtype();
+                    houseType = housingTypeInfo.get(i).getHousingtype(); //주거형태
                     houseTypeHeight = housingTypeInfo.get(i).getHeight(); // 층고
                     houseTypeAflatnumber = housingTypeInfo.get(i).getAflatnumber(); //평수
                     houseTypeCeiling = housingTypeInfo.get(i).getCeilingtype(); //천장
@@ -487,8 +571,14 @@ public class EstimateConfirm extends javax.swing.JFrame {
             fileMgmt2.splitTileFileData();
             tileInfo = fileMgmt2.returnTileInfo();
             for(int i=0; i<tileInfo.size();i++){
-                if(num.equals(tileInfo.get(i).getNum())){
-                    tilePrice = tileInfo.get(i).getTotal();
+                if(num.equals(tileInfo.get(i).getNum())){ 
+                    tileTexture = tileInfo.get(i).getTexture(); //재질
+                    tileMood = tileInfo.get(i).getMood(); //느낌
+                    tileColor = tileInfo.get(i).getColor(); //색상
+                    tileShape = tileInfo.get(i).getShape(); //모양
+                    tileDesign = tileInfo.get(i).getDesign(); //디자인
+                    tileAmount = tileInfo.get(i).getAmount(); //수량
+                    tilePrice = tileInfo.get(i).getTotal(); //가격
                 }
             }
             
@@ -525,6 +615,11 @@ public class EstimateConfirm extends javax.swing.JFrame {
         jTextField12.setText(houseTypeFloor);
         jTextField13.setText(houseTypeWall);
         jTextField14.setText(houseTypeWindow);
+        
+        //타일 상세보기 화면
+        jTextField15.setText(tileTexture);
+        jTextField16.setText(tileMood);
+        jTextArea1.setText(String.format("색상: %s\n모양: %s\n디자인: %s\n주문 수량: %s", tileColor, tileShape, tileDesign, tileAmount));
     }
     /**
      * @param args the command line arguments
@@ -568,6 +663,7 @@ public class EstimateConfirm extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JDialog jDialog3;
@@ -580,6 +676,8 @@ public class EstimateConfirm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -590,13 +688,19 @@ public class EstimateConfirm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
+    private javax.swing.JTextField jTextField15;
+    private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
