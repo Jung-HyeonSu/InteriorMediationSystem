@@ -207,7 +207,21 @@ public class TileFactoryGui extends javax.swing.JFrame {
             String shape = tile.shape.toString();
             String design = tile.design.toString();
             
-            String str = String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s", num, moodType, textureType, color, shape, design, amount);
+            int price = 0;            
+            if(texture == "대리석") {
+                price = 320000;
+            }
+            else if(texture == "나무") {
+                price = 270000;
+            }
+            else if(texture == "석재"){
+                price = 295000;
+            }
+            
+            int A = price * Integer.parseInt(amount);
+            String total = Integer.toString(A);
+            
+            String str = String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", num, moodType, textureType, color, shape, design, amount, total);
             
             ArrayList<TileInfo> tileInfo = new ArrayList<>();
             
@@ -229,7 +243,21 @@ public class TileFactoryGui extends javax.swing.JFrame {
             String shape = tile.shape.toString();
             String design = tile.design.toString();
             
-             String str = String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s", num, moodType, textureType, color, shape, design, amount);
+            int price = 0;            
+            if(texture == "대리석") {
+                price = 320000;
+            }
+            else if(texture == "나무") {
+                price = 270000;
+            }
+            else if(texture == "석재"){
+                price = 295000;
+            }
+            
+            int A = price * Integer.parseInt(amount);
+            String total = Integer.toString(A);
+            
+            String str = String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", num, moodType, textureType, color, shape, design, amount, total);
             
             ArrayList<TileInfo> tileInfo = new ArrayList<>();
             
@@ -251,8 +279,22 @@ public class TileFactoryGui extends javax.swing.JFrame {
             String shape = tile.shape.toString();
             String design = tile.design.toString();
             
-            String str = String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s", num, moodType, textureType, color, shape, design, amount);
+            int price = 0;            
+            if(texture == "대리석") {
+                price = 320000;
+            }
+            else if(texture == "나무") {
+                price = 270000;
+            }
+            else if(texture == "석재"){
+                price = 295000;
+            }
             
+            int A = price * Integer.parseInt(amount);
+            String total = Integer.toString(A);
+            
+            String str = String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", num, moodType, textureType, color, shape, design, amount, total);
+                        
             ArrayList<TileInfo> tileInfo = new ArrayList<>();
             
             FileMgmt fileMgmt = new FileMgmt();
@@ -362,8 +404,19 @@ public class TileFactoryGui extends javax.swing.JFrame {
             String color = tile.color.toString();
             String shape = tile.shape.toString();
             String design = tile.design.toString();
+            
+            String price ="";            
+            if(texture == "대리석") {
+                price = "320000";
+            }
+            else if(texture == "나무") {
+                price = "270000";
+            }
+            else if(texture == "석재"){
+                price = "295000";
+            }
 
-            jTextArea1.setText(String.format("재질: %s\n색상: %s\n모양: %s\n디자인: %s", texture, color, shape, design ));
+            jTextArea1.setText(String.format("재질: %s\n색상: %s\n모양: %s\n디자인: %s\n묶음당 가격: %s", texture, color, shape, design, price ));
             
         }
         
@@ -376,7 +429,19 @@ public class TileFactoryGui extends javax.swing.JFrame {
             String shape = tile.shape.toString();
             String design = tile.design.toString();
 
-            jTextArea1.setText(String.format("재질: %s\n색상: %s\n모양: %s\n디자인: %s", texture, color, shape, design ));
+            String price ="";            
+            if(texture == "대리석") {
+                price = "320000";
+            }
+            else if(texture == "나무") {
+                price = "270000";
+            }
+            else if(texture == "석재"){
+                price = "295000";
+            }
+
+            jTextArea1.setText(String.format("재질: %s\n색상: %s\n모양: %s\n디자인: %s\n묶음당 가격: %s", texture, color, shape, design, price ));
+            
         }
         
         else if ("따듯한".equals(moodType)) {
@@ -387,8 +452,19 @@ public class TileFactoryGui extends javax.swing.JFrame {
             String color = tile.color.toString();
             String shape = tile.shape.toString();
             String design = tile.design.toString();
+            
+             String price ="";            
+            if(texture == "대리석") {
+                price = "320000";
+            }
+            else if(texture == "나무") {
+                price = "270000";
+            }
+            else if(texture == "석재"){
+                price = "295000";
+            }
 
-            jTextArea1.setText(String.format("재질: %s\n색상: %s\n모양: %s\n디자인: %s", texture, color, shape, design ));
+            jTextArea1.setText(String.format("재질: %s\n색상: %s\n모양: %s\n디자인: %s\n묶음당 가격: %s", texture, color, shape, design, price ));
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 

@@ -16,8 +16,9 @@ public class TileInfo {
     String shape;
     String design;
     String amount;
+    String total;
     
-     public TileInfo(String num, String mood, String texture, String color, String shape, String design, String amount){
+     public TileInfo(String num, String mood, String texture, String color, String shape, String design, String amount, String total){
         this.num = num;
         this.mood = mood;
         this.texture = texture;
@@ -25,6 +26,15 @@ public class TileInfo {
         this.shape = shape;
         this.design = design;
         this.amount = amount;
+        this.total = total;
+    }
+
+    public String getTotal() {
+        return total;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
     }
 
     public String getNum() {
