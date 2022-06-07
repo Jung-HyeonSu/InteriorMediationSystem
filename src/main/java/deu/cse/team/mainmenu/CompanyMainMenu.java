@@ -4,6 +4,7 @@
  */
 package deu.cse.team.mainmenu;
 
+import deu.cse.team.companyfunc.EstimateConfirm;
 import deu.cse.team.login.Login;
 import deu.cse.team.observer.CompanyNotice;
 
@@ -63,6 +64,11 @@ public class CompanyMainMenu extends javax.swing.JFrame {
         });
 
         jButton2.setText("견적 확인");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,6 +128,12 @@ public class CompanyMainMenu extends javax.swing.JFrame {
         companynotice.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        EstimateConfirm estimateConfirm = new EstimateConfirm(jLabel3.getText());
+        estimateConfirm.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

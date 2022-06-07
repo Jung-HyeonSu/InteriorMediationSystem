@@ -8,6 +8,7 @@ import deu.cse.team.source.EstimateInfo;
 import deu.cse.team.source.FileMgmt;
 import deu.cse.team.source.HousingTypeInfo;
 import deu.cse.team.source.PaintInfo;
+import deu.cse.team.source.ReplyInfo;
 import deu.cse.team.source.TileInfo;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,7 +27,17 @@ public class EstimateConfirm extends javax.swing.JFrame {
     /**
      * Creates new form EstimateConfirm
      */
+    String id;
+
     public EstimateConfirm() {
+        initComponents();
+        setLocationRelativeTo(this);
+        setTitle("견적서 확인");
+        loadEstimateData();
+    }
+
+    public EstimateConfirm(String id) {
+        this.id = id;
         initComponents();
         setLocationRelativeTo(this);
         setTitle("견적서 확인");
@@ -161,6 +172,11 @@ public class EstimateConfirm extends javax.swing.JFrame {
         jTextField7.setEditable(false);
 
         jButton9.setText("확정");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         jButton10.setText("취소");
 
@@ -297,6 +313,11 @@ public class EstimateConfirm extends javax.swing.JFrame {
         jLabel16.setText("창문");
 
         jButton6.setText("취소");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jTextField9.setEditable(false);
 
@@ -410,6 +431,11 @@ public class EstimateConfirm extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTextArea1);
 
         jButton7.setText("취소");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jDialog3Layout = new javax.swing.GroupLayout(jDialog3.getContentPane());
         jDialog3.getContentPane().setLayout(jDialog3Layout);
@@ -462,6 +488,7 @@ public class EstimateConfirm extends javax.swing.JFrame {
                 "유형", "색상", "가격"
             }
         ));
+        jTable2.setEnabled(false);
         jScrollPane3.setViewportView(jTable2);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -485,6 +512,11 @@ public class EstimateConfirm extends javax.swing.JFrame {
         jLabel19.setText("페인트");
 
         jButton8.setText("취소");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jDialog4Layout = new javax.swing.GroupLayout(jDialog4.getContentPane());
         jDialog4.getContentPane().setLayout(jDialog4Layout);
@@ -610,7 +642,7 @@ public class EstimateConfirm extends javax.swing.JFrame {
         // TODO add your handling code here:
         jDialog3.setVisible(true);
         jDialog3.setLocationRelativeTo(this);
-        jDialog3.setSize(400, 300);
+        jDialog3.setSize(400, 340);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -623,12 +655,11 @@ public class EstimateConfirm extends javax.swing.JFrame {
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
 
-        boolean isNumeric =  jTextField6.getText().matches("[+-]?\\d*(\\.\\d+)?");
-        if (!isNumeric){
-            showMessageDialog(null,"숫자만 입력해주세요.");
-        }
-        else{
-            int sum = Integer.parseInt(jTextField4.getText())+Integer.parseInt(jTextField5.getText())+Integer.parseInt(jTextField6.getText());
+        boolean isNumeric = jTextField6.getText().matches("[+-]?\\d*(\\.\\d+)?");
+        if (!isNumeric) {
+            showMessageDialog(null, "숫자만 입력해주세요.");
+        } else {
+            int sum = Integer.parseInt(jTextField4.getText()) + Integer.parseInt(jTextField5.getText()) + Integer.parseInt(jTextField6.getText());
             jTextField7.setText(Integer.toString(sum));
         }
     }//GEN-LAST:event_jButton11ActionPerformed
@@ -636,7 +667,35 @@ public class EstimateConfirm extends javax.swing.JFrame {
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
-    private void loadEstimateData(){
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        String str = String.format("%s\t%s\t%s\t%s", id, jTextField2.getText(), jTextField7.getText(), "N");
+        ArrayList<ReplyInfo> replyInfo = new ArrayList<>();
+        FileMgmt fileMgmt = new FileMgmt();
+        try {
+            fileMgmt.writeFileData("C:\\DB\\ReplyList.txt", str);
+        } catch (IOException ex) {
+            Logger.getLogger(EstimateConfirm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        jDialog2.dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        jDialog3.dispose();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        jDialog4.dispose();
+    }//GEN-LAST:event_jButton8ActionPerformed
+    private void loadEstimateData() {
         ArrayList<EstimateInfo> estimateInfo = new ArrayList<>();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setNumRows(0);
@@ -651,15 +710,14 @@ public class EstimateConfirm extends javax.swing.JFrame {
                     estimateInfo.get(i).getNum()
                 });
             }
-        }
-        catch (IOException ex){
+        } catch (IOException ex) {
             Logger.getLogger(EstimateConfirm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    private void loadEstimateDataDetail(){
+
+    private void loadEstimateDataDetail() {
         int row = jTable1.getSelectedRow(); // 선택된 열
-        
+
         String id = jTable1.getValueAt(row, 0).toString(); // 아이디
         String num = jTable1.getValueAt(row, 1).toString(); // 주문서 번호
         String houseType = null; // 주거 유형
@@ -669,7 +727,7 @@ public class EstimateConfirm extends javax.swing.JFrame {
         String houseTypeFloor = null; //바닥
         String houseTypeWall = null; //벽
         String houseTypeWindow = null; //창문
-        
+
         String tileTexture = "선택 안함"; //재질
         String tileMood = "선택 안함"; //느낌
         String tileColor = "선택 안함"; //색상
@@ -677,12 +735,11 @@ public class EstimateConfirm extends javax.swing.JFrame {
         String tileDesign = "선택 안함"; //디자인
         String tileAmount = "선택 안함"; //수량
         String tilePrice = "선택 안함"; // 타일 총 가격
-        
-        
+
         String paintType = null; // 유형
         String paintColor = null; // 색상
         String paintPrice = null; // 페인트
-        
+
         ArrayList<HousingTypeInfo> housingTypeInfo = new ArrayList<>();
         ArrayList<TileInfo> tileInfo = new ArrayList<>();
         ArrayList<PaintInfo> paintInfo = new ArrayList<>();
@@ -693,7 +750,7 @@ public class EstimateConfirm extends javax.swing.JFrame {
             fileMgmt.splitHousingTypeFileData();
             housingTypeInfo = fileMgmt.returnHousingTypeInfo();
             for (int i = 0; i < housingTypeInfo.size(); i++) {
-                if(num.equals(housingTypeInfo.get(i).getNum())){ // 주문서 번호와 같은 경우
+                if (num.equals(housingTypeInfo.get(i).getNum())) { // 주문서 번호와 같은 경우
                     houseType = housingTypeInfo.get(i).getHousingtype(); //주거형태
                     houseTypeHeight = housingTypeInfo.get(i).getHeight(); // 층고
                     houseTypeAflatnumber = housingTypeInfo.get(i).getAflatnumber(); //평수
@@ -703,14 +760,14 @@ public class EstimateConfirm extends javax.swing.JFrame {
                     houseTypeWindow = housingTypeInfo.get(i).getWindowtype(); //창문
                 }
             }
-            
+
             //타일 유형
             FileMgmt fileMgmt2 = new FileMgmt();
             fileMgmt2.readTileFileData("C:\\DB\\TileList.txt");
             fileMgmt2.splitTileFileData();
             tileInfo = fileMgmt2.returnTileInfo();
-            for(int i=0; i<tileInfo.size();i++){
-                if(num.equals(tileInfo.get(i).getNum())){ 
+            for (int i = 0; i < tileInfo.size(); i++) {
+                if (num.equals(tileInfo.get(i).getNum())) {
                     tileTexture = tileInfo.get(i).getTexture(); //재질
                     tileMood = tileInfo.get(i).getMood(); //느낌
                     tileColor = tileInfo.get(i).getColor(); //색상
@@ -720,38 +777,36 @@ public class EstimateConfirm extends javax.swing.JFrame {
                     tilePrice = tileInfo.get(i).getTotal(); //가격
                 }
             }
-            
+
             //페인트 유형
             FileMgmt fileMgmt3 = new FileMgmt();
             fileMgmt3.readPaintFileData("C:\\DB\\Paint.txt");
             fileMgmt3.splitPaintFileData();
             paintInfo = fileMgmt3.returnPaintInfo();
             DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
-            int sum =0;
-            for(int i=0; i<paintInfo.size();i++){
-                if(num.equals(paintInfo.get(i).getNum())){
+            int sum = 0;
+            for (int i = 0; i < paintInfo.size(); i++) {
+                if (num.equals(paintInfo.get(i).getNum())) {
                     sum += Integer.parseInt(paintInfo.get(i).getMoney());
                     model.addRow(new Object[]{
-                    paintInfo.get(i).getType(),
-                    paintInfo.get(i).getColor(),
-                    paintInfo.get(i).getMoney()
-                });
+                        paintInfo.get(i).getType(),
+                        paintInfo.get(i).getColor(),
+                        paintInfo.get(i).getMoney()
+                    });
                 }
             }
             paintPrice = Integer.toString(sum);
-        }
-        catch (IOException ex){
+        } catch (IOException ex) {
             Logger.getLogger(EstimateConfirm.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         //조회 화면
         jTextField1.setText(id);
         jTextField2.setText(num);
         jTextField3.setText(houseType);
         jTextField4.setText(tilePrice);
         jTextField5.setText(paintPrice);
-        
-        
+
         // 주거유형 상세보기 화면
         jTextField8.setText(houseType);
         jTextField9.setText(houseTypeHeight);
@@ -760,12 +815,13 @@ public class EstimateConfirm extends javax.swing.JFrame {
         jTextField12.setText(houseTypeFloor);
         jTextField13.setText(houseTypeWall);
         jTextField14.setText(houseTypeWindow);
-        
+
         //타일 상세보기 화면
         jTextField15.setText(tileTexture);
         jTextField16.setText(tileMood);
         jTextArea1.setText(String.format("색상: %s\n모양: %s\n디자인: %s\n주문 수량: %s", tileColor, tileShape, tileDesign, tileAmount));
     }
+
     /**
      * @param args the command line arguments
      */
