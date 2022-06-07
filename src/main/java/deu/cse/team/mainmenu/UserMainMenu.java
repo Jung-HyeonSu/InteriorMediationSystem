@@ -11,6 +11,7 @@ import deu.cse.team.source.EstimateInfo;
 import deu.cse.team.source.FileMgmt;
 import deu.cse.team.source.TileInfo;
 import deu.cse.team.strategy.HousingTypeGui;
+import deu.cse.team.userfunc.UserfuncGui;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.LineNumberReader;
@@ -127,9 +128,9 @@ public class UserMainMenu extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jButton1)
-                .addGap(42, 42, 42)
+                .addGap(68, 68, 68)
                 .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(16, 16, 16)
                 .addComponent(SignOutButton)
@@ -158,8 +159,8 @@ public class UserMainMenu extends javax.swing.JFrame {
             Logger.getLogger(UserMainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        
-        String str = String.format("%s\t%s", id, Integer.toString(num));
+        String pay = "N";
+        String str = String.format("%s\t%s\t%s", id, Integer.toString(num), pay);
         ArrayList<EstimateInfo> estimateInfo = new ArrayList<>();
         FileMgmt fileMgmt = new FileMgmt();
         try {
@@ -182,6 +183,11 @@ public class UserMainMenu extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        String id = jLabel3.getText();
+        
+        UserfuncGui userfuncGui = new UserfuncGui(id);
+        userfuncGui.setVisible(true);     
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

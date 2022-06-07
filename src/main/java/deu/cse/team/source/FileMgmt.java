@@ -273,7 +273,7 @@ public class FileMgmt implements FileInterface {
         for (int i = 0; i < readEstimateInfo.size(); i++) {
             line = readEstimateInfo.get(i);
             String[] str = line.split("\t");
-            estimateInfo.add(new EstimateInfo(str[0], str[1]));
+            estimateInfo.add(new EstimateInfo(str[0], str[1], str[2]));
         }
     }
     public void splitPaintFileData() {

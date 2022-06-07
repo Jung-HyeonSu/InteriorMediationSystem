@@ -11,10 +11,20 @@ package deu.cse.team.source;
 public class EstimateInfo {
     String id;
     String num;
+    String pay;
     
-    public EstimateInfo(String id, String num){
+    public EstimateInfo(String id, String num, String pay){
         this.id = id;
         this.num = num;
+        this.pay = pay;
+    }
+
+    public String getPay() {
+        return pay;
+    }
+
+    public void setPay(String pay) {
+        this.pay = pay;
     }
 
     public String getId() {
