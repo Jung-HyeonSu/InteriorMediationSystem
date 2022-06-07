@@ -43,6 +43,7 @@ public class PayGui extends javax.swing.JFrame {
      * Creates new form Pay
      */
     String num;
+    String comp;
     public PayGui() {
         initComponents();
        
@@ -50,13 +51,14 @@ public class PayGui extends javax.swing.JFrame {
         remoteControl.setCommand(1, payConfirmOkCommnad, payConfirmCancelCommnad);
     }
     
-    public PayGui(String num) {
+    public PayGui(String num, String comp) {
         initComponents();
        
         remoteControl.setCommand(0, payTypeCash, payTypeCheckCard, payTypeCreditCard);
         remoteControl.setCommand(1, payConfirmOkCommnad, payConfirmCancelCommnad);
         
         this.num = num;
+        this.comp = comp;
     }
 
     /**

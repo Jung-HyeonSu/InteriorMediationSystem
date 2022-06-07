@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package deu.cse.team.companyfunc;
+package deu.cse.team.userfunc;
 
+import deu.cse.team.command.PayGui;
+import deu.cse.team.companyfunc.*;
 import deu.cse.team.source.EstimateInfo;
 import deu.cse.team.source.FileMgmt;
 import deu.cse.team.source.HousingTypeInfo;
@@ -22,21 +24,21 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author PC
  */
-public class EstimateConfirm extends javax.swing.JFrame {
+public class EstimateSelect extends javax.swing.JFrame {
 
     /**
      * Creates new form EstimateConfirm
      */
     String id;
 
-    public EstimateConfirm() {
+    public EstimateSelect() {
         initComponents();
         setLocationRelativeTo(this);
         setTitle("견적서 확인");
         loadEstimateData();
     }
 
-    public EstimateConfirm(String id) {
+    public EstimateSelect(String id) {
         this.id = id;
         initComponents();
         setLocationRelativeTo(this);
@@ -75,7 +77,6 @@ public class EstimateConfirm extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
         jDialog2 = new javax.swing.JDialog();
         jLabel10 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
@@ -120,7 +121,7 @@ public class EstimateConfirm extends javax.swing.JFrame {
 
         jLabel3.setText("주거 유형:");
 
-        jLabel4.setText("아이디:");
+        jLabel4.setText("업체명:");
 
         jLabel5.setText("주문서 번호:");
 
@@ -140,6 +141,7 @@ public class EstimateConfirm extends javax.swing.JFrame {
 
         jTextField5.setEditable(false);
 
+        jTextField6.setEditable(false);
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField6ActionPerformed(evt);
@@ -171,7 +173,7 @@ public class EstimateConfirm extends javax.swing.JFrame {
 
         jTextField7.setEditable(false);
 
-        jButton9.setText("확정");
+        jButton9.setText("결제");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -179,11 +181,9 @@ public class EstimateConfirm extends javax.swing.JFrame {
         });
 
         jButton10.setText("취소");
-
-        jButton11.setText("입력");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                jButton10ActionPerformed(evt);
             }
         });
 
@@ -226,8 +226,7 @@ public class EstimateConfirm extends javax.swing.JFrame {
                 .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton3)
                     .addComponent(jButton5)
-                    .addComponent(jButton4)
-                    .addComponent(jButton11))
+                    .addComponent(jButton4))
                 .addGap(44, 44, 44))
             .addGroup(jDialog1Layout.createSequentialGroup()
                 .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,8 +278,7 @@ public class EstimateConfirm extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton11))
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -558,9 +556,17 @@ public class EstimateConfirm extends javax.swing.JFrame {
 
             },
             new String [] {
-                "아이디", "주문서 번호"
+                "주문서 번호", "업체명", "제시가"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.setFocusable(false);
         jScrollPane1.setViewportView(jTable1);
 
@@ -586,6 +592,11 @@ public class EstimateConfirm extends javax.swing.JFrame {
         });
 
         jButton2.setText("취소");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -653,32 +664,16 @@ public class EstimateConfirm extends javax.swing.JFrame {
         jDialog4.setSize(440, 300);
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
-
-        boolean isNumeric = jTextField6.getText().matches("[+-]?\\d*(\\.\\d+)?");
-        if (!isNumeric) {
-            showMessageDialog(null, "숫자만 입력해주세요.");
-        } else {
-            int sum = Integer.parseInt(jTextField4.getText()) + Integer.parseInt(jTextField5.getText()) + Integer.parseInt(jTextField6.getText());
-            jTextField7.setText(Integer.toString(sum));
-        }
-    }//GEN-LAST:event_jButton11ActionPerformed
-
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
-        String str = String.format("%s\t%s\t%s\t%s", id, jTextField2.getText(), jTextField7.getText(), "N");
-        ArrayList<ReplyInfo> replyInfo = new ArrayList<>();
-        FileMgmt fileMgmt = new FileMgmt();
-        try {
-            fileMgmt.writeFileData("C:\\DB\\ReplyList.txt", str);
-        } catch (IOException ex) {
-            Logger.getLogger(EstimateConfirm.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+        PayGui payGui = new PayGui(jTextField2.getText(), jTextField1.getText() );
+        payGui.setVisible(true);     
+       
 
     }//GEN-LAST:event_jButton9ActionPerformed
 
@@ -696,31 +691,57 @@ public class EstimateConfirm extends javax.swing.JFrame {
         // TODO add your handling code here:
         jDialog4.dispose();
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+        jDialog1.dispose();
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
     private void loadEstimateData() {
         ArrayList<EstimateInfo> estimateInfo = new ArrayList<>();
+        ArrayList<ReplyInfo> replyInfo = new ArrayList<>();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setNumRows(0);
         try {
             FileMgmt fileMgmt = new FileMgmt();
+            FileMgmt fileMgmt2 = new FileMgmt();
+
             fileMgmt.readEstimateFileData("C:\\DB\\EstimateList.txt");
+            fileMgmt2.readReplyFileData("C:\\DB\\ReplyList.txt");
+
             fileMgmt.splitEstimateFileData();
+            fileMgmt2.splitReplyFileData();
+
             estimateInfo = fileMgmt.returnEstimateInfo();
+            replyInfo = fileMgmt2.returnReplyInfo();
+
             for (int i = 0; i < estimateInfo.size(); i++) {
-                model.addRow(new Object[]{
-                    estimateInfo.get(i).getId(),
-                    estimateInfo.get(i).getNum()
-                });
+                if (id.equals(estimateInfo.get(i).getId())) {
+ 
+                    for (int j = 0; j < replyInfo.size(); j++) {
+                        if ((estimateInfo.get(i).getNum()).equals(replyInfo.get(j).getNum())) {
+                            
+                            model.addRow(new Object[]{estimateInfo.get(i).getNum(), replyInfo.get(j).getId(), replyInfo.get(j).getPrice()});
+                        }
+                    }
+                }
             }
         } catch (IOException ex) {
-            Logger.getLogger(EstimateConfirm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EstimateSelect.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 
     private void loadEstimateDataDetail() {
         int row = jTable1.getSelectedRow(); // 선택된 열
 
-        String id = jTable1.getValueAt(row, 0).toString(); // 아이디
-        String num = jTable1.getValueAt(row, 1).toString(); // 주문서 번호
+        
+        String num = jTable1.getValueAt(row, 0).toString(); // 주문서 번호
+        String id = jTable1.getValueAt(row, 1).toString(); // 업체명
+        
         String houseType = null; // 주거 유형
         String houseTypeHeight = null; // 층고
         String houseTypeAflatnumber = null; //평수
@@ -798,7 +819,7 @@ public class EstimateConfirm extends javax.swing.JFrame {
             }
             paintPrice = Integer.toString(sum);
         } catch (IOException ex) {
-            Logger.getLogger(EstimateConfirm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EstimateSelect.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         //조회 화면
@@ -807,6 +828,10 @@ public class EstimateConfirm extends javax.swing.JFrame {
         jTextField3.setText(houseType);
         jTextField4.setText(tilePrice);
         jTextField5.setText(paintPrice);
+        jTextField6.setText(jTable1.getValueAt(row, 2).toString());
+        
+        int sum = Integer.parseInt(jTextField4.getText()) + Integer.parseInt(jTextField5.getText()) + Integer.parseInt(jTextField6.getText());
+        jTextField7.setText(Integer.toString(sum));         //총 가격
 
         // 주거유형 상세보기 화면
         jTextField8.setText(houseType);
@@ -840,20 +865,27 @@ public class EstimateConfirm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EstimateConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EstimateSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EstimateConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EstimateSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EstimateConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EstimateSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EstimateConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EstimateSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EstimateConfirm().setVisible(true);
+                new EstimateSelect().setVisible(true);
             }
         });
     }
@@ -861,7 +893,6 @@ public class EstimateConfirm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

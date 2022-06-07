@@ -11,7 +11,7 @@ import deu.cse.team.source.EstimateInfo;
 import deu.cse.team.source.FileMgmt;
 import deu.cse.team.source.TileInfo;
 import deu.cse.team.strategy.HousingTypeGui;
-import deu.cse.team.userfunc.UserfuncGui;
+import deu.cse.team.userfunc.EstimateSelect;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.LineNumberReader;
@@ -85,7 +85,7 @@ public class UserMainMenu extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("견적서 확인");
+        jButton3.setText("견적 답변 확인");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -96,8 +96,8 @@ public class UserMainMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(154, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(147, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -114,8 +114,8 @@ public class UserMainMenu extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(152, 152, 152))))
+                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(143, 143, 143))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,13 +126,13 @@ public class UserMainMenu extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(28, 28, 28)
                 .addComponent(jButton1)
                 .addGap(68, 68, 68)
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(jButton2)
-                .addGap(16, 16, 16)
+                .addGap(17, 17, 17)
                 .addComponent(SignOutButton)
                 .addGap(24, 24, 24))
         );
@@ -185,8 +185,8 @@ public class UserMainMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         String id = jLabel3.getText();
         
-        UserfuncGui userfuncGui = new UserfuncGui(id);
-        userfuncGui.setVisible(true);     
+        EstimateSelect estimateSelect = new EstimateSelect(id);
+        estimateSelect.setVisible(true);     
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
