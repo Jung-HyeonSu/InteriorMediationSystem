@@ -26,6 +26,9 @@ public class AdminfuncGui extends javax.swing.JFrame {
      */
     public AdminfuncGui() {
         initComponents();
+        
+        setLocationRelativeTo(this);
+        
         renew();
         
 
