@@ -179,6 +179,11 @@ public class EstimateConfirm extends javax.swing.JFrame {
         });
 
         jButton10.setText("취소");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         jButton11.setText("입력");
         jButton11.addActionListener(new java.awt.event.ActionListener() {
@@ -586,6 +591,11 @@ public class EstimateConfirm extends javax.swing.JFrame {
         });
 
         jButton2.setText("취소");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -679,6 +689,9 @@ public class EstimateConfirm extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(EstimateConfirm.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        loadEstimateData();
+
         jDialog1.dispose();
     }//GEN-LAST:event_jButton9ActionPerformed
 
@@ -696,20 +709,42 @@ public class EstimateConfirm extends javax.swing.JFrame {
         // TODO add your handling code here:
         jDialog4.dispose();
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+        jDialog1.dispose();
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
     private void loadEstimateData() {
         ArrayList<EstimateInfo> estimateInfo = new ArrayList<>();
+        ArrayList<ReplyInfo> replyInfo = new ArrayList<>();
+
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setNumRows(0);
         try {
             FileMgmt fileMgmt = new FileMgmt();
+            FileMgmt fileMgmt2 = new FileMgmt();
             fileMgmt.readEstimateFileData("C:\\DB\\EstimateList.txt");
+            fileMgmt2.readReplyFileData("C:\\DB\\ReplyList.txt");
             fileMgmt.splitEstimateFileData();
+            fileMgmt2.splitReplyFileData();
             estimateInfo = fileMgmt.returnEstimateInfo();
+            replyInfo = fileMgmt2.returnReplyInfo();
+
             for (int i = 0; i < estimateInfo.size(); i++) {
-                model.addRow(new Object[]{
-                    estimateInfo.get(i).getId(),
-                    estimateInfo.get(i).getNum()
-                });
+                String a = "0";
+                for (int j = 0; j < replyInfo.size(); j++) {
+                    if ((replyInfo.get(j).getNum()).equals(estimateInfo.get(i).getNum()) && id.equals(replyInfo.get(j).getId())) {
+                            a = "1";
+                    }
+                }
+                if(!"1".equals(a)){
+                model.addRow(new Object[]{estimateInfo.get(i).getId(), estimateInfo.get(i).getNum()});
+                }
             }
         } catch (IOException ex) {
             Logger.getLogger(EstimateConfirm.class.getName()).log(Level.SEVERE, null, ex);
@@ -735,7 +770,7 @@ public class EstimateConfirm extends javax.swing.JFrame {
         String tileShape = "선택 안함"; //모양
         String tileDesign = "선택 안함"; //디자인
         String tileAmount = "선택 안함"; //수량
-        String tilePrice = "선택 안함"; // 타일 총 가격
+        String tilePrice = "0"; // 타일 총 가격
 
         String paintType = null; // 유형
         String paintColor = null; // 색상
