@@ -159,6 +159,7 @@ public class UserMainMenu extends javax.swing.JFrame {
     private void SignOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignOutButtonActionPerformed
         // TODO add your handling code here:
         new Login().setVisible(true);
+        dispose();
     }//GEN-LAST:event_SignOutButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

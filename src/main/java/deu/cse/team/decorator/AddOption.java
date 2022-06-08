@@ -417,6 +417,7 @@ public class AddOption extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
+         loadColorData();
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void loadColorData(){
