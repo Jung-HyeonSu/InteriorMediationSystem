@@ -29,7 +29,7 @@ public class UserEstimate extends javax.swing.JFrame {
     /**
      * Creates new form EstimateConfirm
      */
-    String id;
+    String id ="";
 
     public UserEstimate() {
         initComponents();

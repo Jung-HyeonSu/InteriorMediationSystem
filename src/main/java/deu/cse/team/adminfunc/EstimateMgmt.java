@@ -330,7 +330,7 @@ public class EstimateMgmt extends javax.swing.JFrame {
         fileMgmt6.readPayTypeFileData("C:\\DB\\PayTypeList.txt");
         fileMgmt6.splitPayTypeFileData();
         try {   
-            PrintWriter pw = new PrintWriter("C:\\DB\\TileList.txt");
+            PrintWriter pw = new PrintWriter("C:\\DB\\PayTypeList.txt");
             payTypeInfo = fileMgmt6.returnPayTypeInfo();
             String data;
             for (int i = 0; i < payTypeInfo.size(); i++) {
@@ -344,7 +344,7 @@ public class EstimateMgmt extends javax.swing.JFrame {
         catch (IOException ex) {
            Logger.getLogger(EstimateMgmt.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        jDialog1.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void loadEstimateData() {
