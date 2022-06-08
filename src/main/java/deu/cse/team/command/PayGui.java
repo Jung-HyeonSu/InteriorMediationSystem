@@ -519,8 +519,8 @@ public class PayGui extends javax.swing.JFrame {
                         data = String.format("%s\t%s\t%s", estimateInfo.get(i).getId(), estimateInfo.get(i).getNum(), estimateInfo.get(i).getPay() );
                         pw.println(data);
                     }
-                    pw.close();
                 }
+                 pw.close();
             } catch (IOException ex) {
                 Logger.getLogger(PayGui.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -543,8 +543,8 @@ public class PayGui extends javax.swing.JFrame {
                         data = String.format("%s\t%s\t%s\t%s", replyInfo.get(i).getId(), replyInfo.get(i).getNum(), replyInfo.get(i).getPrice(), replyInfo.get(i).getSelect());
                         pw.println(data);
                     }
-                    pw.close();
                 }
+                pw.close();
             } catch (IOException ex) {
                 Logger.getLogger(PayGui.class.getName()).log(Level.SEVERE, null, ex);
             }

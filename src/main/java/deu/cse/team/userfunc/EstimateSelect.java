@@ -285,7 +285,7 @@ public class EstimateSelect extends javax.swing.JFrame {
                 .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton9)
                     .addComponent(jButton10))
@@ -675,8 +675,9 @@ public class EstimateSelect extends javax.swing.JFrame {
         //주문번호, 업체아이디, 추가 옵션, 업체견적가, 총 금액
         PayGui payGui = new PayGui(jTextField2.getText(), jTextField1.getText(), Integer.toString(sum), jTextField6.getText(), jTextField7.getText());
         payGui.setVisible(true);
-
-
+        
+        jDialog1.dispose();
+        dispose();
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
