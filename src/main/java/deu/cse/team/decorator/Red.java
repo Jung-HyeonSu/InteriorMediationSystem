@@ -20,7 +20,8 @@ class Red extends CondimentDecorator {
 
   public int cost() {
         ArrayList<ColorInfo> colorInfo = new ArrayList();
-        String money=null;
+        String money="0";
+        int cost=0;
         try {
             FileMgmt fileMgmt = new FileMgmt();
             fileMgmt.readColorFileData("C:\\DB\\Color.txt");
@@ -34,8 +35,8 @@ class Red extends CondimentDecorator {
         }
         catch (IOException e){
         }
-        
-      return Integer.parseInt(money) + color.cost();
+        cost = Integer.parseInt(money) + color.cost();
+      return cost;
   }
 
   public String ColorValue() {

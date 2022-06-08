@@ -13,7 +13,8 @@ class Window extends Color {
 
   public int cost() {
       ArrayList<ConstructionInfo> constructionInfo = new ArrayList();
-        String money=null;
+        String money="0";
+        int cost=0;
         try {
             FileMgmt fileMgmt = new FileMgmt();
             fileMgmt.readConstructionFileData("C:\\DB\\ConstructionType.txt");
@@ -27,8 +28,8 @@ class Window extends Color {
         }
         catch (IOException e){
         }
-        
-      return Integer.parseInt(money);
+        cost = Integer.parseInt(money);
+      return cost;
   }
 
   public String ColorValue() {
