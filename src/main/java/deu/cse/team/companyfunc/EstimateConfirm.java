@@ -692,6 +692,9 @@ public class EstimateConfirm extends javax.swing.JFrame {
         }
 
         loadEstimateData();
+        
+        jTextField6.setText("");
+        jTextField7.setText("");
 
         jDialog1.dispose();
     }//GEN-LAST:event_jButton9ActionPerformed
