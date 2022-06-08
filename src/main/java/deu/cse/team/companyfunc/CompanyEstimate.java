@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package deu.cse.team.userfunc;
+package deu.cse.team.companyfunc;
 
+import deu.cse.team.userfunc.*;
 import deu.cse.team.command.PayGui;
 import deu.cse.team.companyfunc.*;
 import deu.cse.team.source.EstimateInfo;
@@ -24,21 +25,21 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author PC
  */
-public class EstimateSelect extends javax.swing.JFrame {
+public class CompanyEstimate extends javax.swing.JFrame {
 
     /**
      * Creates new form EstimateConfirm
      */
     String id;
 
-    public EstimateSelect() {
+    public CompanyEstimate() {
         initComponents();
         setLocationRelativeTo(this);
         setTitle("견적서 확인");
         loadEstimateData();
     }
 
-    public EstimateSelect(String id) {
+    public CompanyEstimate(String id) {
         this.id = id;
         initComponents();
         setLocationRelativeTo(this);
@@ -75,7 +76,6 @@ public class EstimateSelect extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
-        jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jDialog2 = new javax.swing.JDialog();
         jLabel10 = new javax.swing.JLabel();
@@ -109,6 +109,7 @@ public class EstimateSelect extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
         jLabel19 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
+        jScrollBar1 = new javax.swing.JScrollBar();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -121,7 +122,7 @@ public class EstimateSelect extends javax.swing.JFrame {
 
         jLabel3.setText("주거 유형:");
 
-        jLabel4.setText("업체명:");
+        jLabel4.setText("고객 ID:");
 
         jLabel5.setText("주문서 번호:");
 
@@ -173,14 +174,7 @@ public class EstimateSelect extends javax.swing.JFrame {
 
         jTextField7.setEditable(false);
 
-        jButton9.setText("결제");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-
-        jButton10.setText("취소");
+        jButton10.setText("확인");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
@@ -232,17 +226,14 @@ public class EstimateSelect extends javax.swing.JFrame {
                 .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jDialog1Layout.createSequentialGroup()
-                                .addGap(119, 119, 119)
-                                .addComponent(jButton9)
-                                .addGap(42, 42, 42)
-                                .addComponent(jButton10))
-                            .addGroup(jDialog1Layout.createSequentialGroup()
-                                .addGap(164, 164, 164)
-                                .addComponent(jLabel2)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(164, 164, 164)
+                        .addComponent(jLabel2)
+                        .addGap(0, 170, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton10)
+                .addGap(155, 155, 155))
         );
 
         jDialog1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel3, jLabel4, jLabel5, jLabel6, jLabel7, jLabel8, jLabel9});
@@ -285,11 +276,9 @@ public class EstimateSelect extends javax.swing.JFrame {
                 .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton9)
-                    .addComponent(jButton10))
-                .addGap(18, 18, 18))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(jButton10)
+                .addGap(15, 15, 15))
         );
 
         jDialog1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel3, jLabel4, jLabel5, jLabel6, jLabel7, jLabel8});
@@ -549,18 +538,18 @@ public class EstimateSelect extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("맑은 고딕", 1, 18)); // NOI18N
-        jLabel1.setText("견적 확인");
+        jLabel1.setText("성사된 견적");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "주문서 번호", "업체명", "제시가"
+                "주문서 번호", "유저 ID", "제시가"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -584,7 +573,7 @@ public class EstimateSelect extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setText("자세히보기");
+        jButton1.setText("조회");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -612,11 +601,11 @@ public class EstimateSelect extends javax.swing.JFrame {
                         .addGap(224, 224, 224)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(167, 167, 167)
+                        .addGap(179, 179, 179)
                         .addComponent(jButton1)
-                        .addGap(37, 37, 37)
+                        .addGap(35, 35, 35)
                         .addComponent(jButton2)))
-                .addContainerGap(170, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -668,18 +657,6 @@ public class EstimateSelect extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-        int sum = Integer.parseInt(jTextField4.getText()) + Integer.parseInt(jTextField5.getText());
-
-        //주문번호, 업체아이디, 추가 옵션, 업체견적가, 총 금액
-        PayGui payGui = new PayGui(jTextField2.getText(), jTextField1.getText(), Integer.toString(sum), jTextField6.getText(), jTextField7.getText());
-        payGui.setVisible(true);
-        
-        jDialog1.dispose();
-        dispose();
-    }//GEN-LAST:event_jButton9ActionPerformed
-
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         jDialog2.dispose();
@@ -721,20 +698,18 @@ public class EstimateSelect extends javax.swing.JFrame {
             estimateInfo = fileMgmt.returnEstimateInfo();
             replyInfo = fileMgmt2.returnReplyInfo();
 
-            for (int i = 0; i < estimateInfo.size(); i++) {
-                if (id.equals(estimateInfo.get(i).getId())) {
-
-                    for (int j = 0; j < replyInfo.size(); j++) {
-                        if ("N".equals(estimateInfo.get(i).getPay()) && (estimateInfo.get(i).getNum()).equals(replyInfo.get(j).getNum())) {
-                            model.addRow(new Object[]{estimateInfo.get(i).getNum(), replyInfo.get(j).getId(), replyInfo.get(j).getPrice()});
+            for (int i = 0; i < replyInfo.size(); i++) {
+                if (id.equals(replyInfo.get(i).getId()) && "Y".equals(replyInfo.get(i).getSelect())) {
+                    for (int j = 0; j < estimateInfo.size(); j++) {
+                        if ((replyInfo.get(i).getNum()).equals(estimateInfo.get(j).getNum())) {
+                            model.addRow(new Object[]{replyInfo.get(i).getNum(), estimateInfo.get(i).getId(), replyInfo.get(j).getPrice()});
                         }
                     }
                 }
             }
         } catch (IOException ex) {
-            Logger.getLogger(EstimateSelect.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CompanyEstimate.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     private void loadEstimateDataDetail() {
@@ -766,6 +741,7 @@ public class EstimateSelect extends javax.swing.JFrame {
         ArrayList<HousingTypeInfo> housingTypeInfo = new ArrayList<>();
         ArrayList<TileInfo> tileInfo = new ArrayList<>();
         ArrayList<PaintInfo> paintInfo = new ArrayList<>();
+
         try {
             //주거 유형
             FileMgmt fileMgmt = new FileMgmt();
@@ -773,6 +749,7 @@ public class EstimateSelect extends javax.swing.JFrame {
             fileMgmt.splitHousingTypeFileData();
             housingTypeInfo = fileMgmt.returnHousingTypeInfo();
             for (int i = 0; i < housingTypeInfo.size(); i++) {
+
                 if (num.equals(housingTypeInfo.get(i).getNum())) { // 주문서 번호와 같은 경우
                     houseType = housingTypeInfo.get(i).getHousingtype(); //주거형태
                     houseTypeHeight = housingTypeInfo.get(i).getHeight(); // 층고
@@ -867,14 +844,70 @@ public class EstimateSelect extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EstimateSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CompanyEstimate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EstimateSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CompanyEstimate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EstimateSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CompanyEstimate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EstimateSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CompanyEstimate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -887,7 +920,7 @@ public class EstimateSelect extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EstimateSelect().setVisible(true);
+                new CompanyEstimate().setVisible(true);
             }
         });
     }
@@ -902,7 +935,6 @@ public class EstimateSelect extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JDialog jDialog3;
@@ -928,6 +960,7 @@ public class EstimateSelect extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

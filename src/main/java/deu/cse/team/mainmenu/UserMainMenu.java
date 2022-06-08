@@ -13,7 +13,7 @@ import deu.cse.team.source.TileInfo;
 import deu.cse.team.strategy.HousingTypeGui;
 import deu.cse.team.userfunc.EstimateSelect;
 import deu.cse.team.facade.Userotherfunc;
-import deu.cse.team.userfunc.SuccessEstimate;
+import deu.cse.team.userfunc.UserEstimate;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.LineNumberReader;
@@ -229,8 +229,8 @@ public class UserMainMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         String id = jLabel3.getText();
                 
-        SuccessEstimate successEstimate = new SuccessEstimate(id);
-        successEstimate.setVisible(true);     
+        UserEstimate userEstimate = new UserEstimate(id);
+        userEstimate.setVisible(true);     
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**

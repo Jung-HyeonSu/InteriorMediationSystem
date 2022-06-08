@@ -24,21 +24,21 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author PC
  */
-public class SuccessEstimate extends javax.swing.JFrame {
+public class UserEstimate extends javax.swing.JFrame {
 
     /**
      * Creates new form EstimateConfirm
      */
     String id;
 
-    public SuccessEstimate() {
+    public UserEstimate() {
         initComponents();
         setLocationRelativeTo(this);
         setTitle("견적서 확인");
         loadEstimateData();
     }
 
-    public SuccessEstimate(String id) {
+    public UserEstimate(String id) {
         this.id = id;
         initComponents();
         setLocationRelativeTo(this);
@@ -707,7 +707,7 @@ public class SuccessEstimate extends javax.swing.JFrame {
                 }
             }
         } catch (IOException ex) {
-            Logger.getLogger(SuccessEstimate.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserEstimate.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -845,14 +845,30 @@ public class SuccessEstimate extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SuccessEstimate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserEstimate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SuccessEstimate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserEstimate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SuccessEstimate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserEstimate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SuccessEstimate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserEstimate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -873,7 +889,7 @@ public class SuccessEstimate extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SuccessEstimate().setVisible(true);
+                new UserEstimate().setVisible(true);
             }
         });
     }
