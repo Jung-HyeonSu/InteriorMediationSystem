@@ -6,6 +6,7 @@ package deu.cse.team.facade;
 
 import deu.cse.team.adminfunc.AdminfuncGui;
 import deu.cse.team.mainmenu.UserMainMenu;
+import deu.cse.team.userfunc.Cale;
 
 /**
  *
@@ -177,9 +178,8 @@ public class Userotherfunc extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        jDialog1.setVisible(true);
-        jDialog1.setLocationRelativeTo(this);
-        jDialog1.setSize(250, 270);
+        Cale cale = new Cale();
+        cale.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
