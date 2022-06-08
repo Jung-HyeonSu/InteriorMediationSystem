@@ -6,6 +6,7 @@ package deu.cse.team.decorator;
 
 import deu.cse.team.factory.TileFactoryGui;
 import deu.cse.team.source.ColorInfo;
+import deu.cse.team.source.ConstructionInfo;
 import deu.cse.team.source.EstimateInfo;
 import deu.cse.team.source.FileMgmt;
 import deu.cse.team.source.PaintInfo;
@@ -417,12 +418,15 @@ public class AddOption extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-         loadColorData();
+        loadColorData();
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void loadColorData(){
+        
         String type = jComboBox1.getSelectedItem().toString();
+        
         ArrayList<ColorInfo> colorInfo = new ArrayList();
+        ArrayList<ConstructionInfo> constructionInfo = new ArrayList();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setNumRows(0);
         try {
@@ -430,16 +434,29 @@ public class AddOption extends javax.swing.JFrame {
             fileMgmt.readColorFileData("C:\\DB\\Color.txt");
             fileMgmt.splitColorFileData();
             colorInfo = fileMgmt.returnColorInfo();
-            for (int i = 0; i < colorInfo.size(); i++) {
-                if((colorInfo.get(i).getType()).equals(jComboBox1.getSelectedItem().toString()))
-                model.addRow(new Object[]{
-                    colorInfo.get(i).getColor(),
-                    colorInfo.get(i).getCost()
-                });
-            }
+            
+            
+            
+            FileMgmt fileMgmt2 = new FileMgmt();
+            fileMgmt2.readConstructionFileData("C:\\DB\\ConstructionType.txt");
+            fileMgmt2.splitConstructionFileData();
+            constructionInfo = fileMgmt2.returnConstructionInfo();
+           
+            
+            for (int j = 0; j<constructionInfo.size(); j++) {     
+                if(type.equals(constructionInfo.get(j).getType())){    
+                   for (int i = 0; i < colorInfo.size(); i++) {
+                       int cost = Integer.parseInt(constructionInfo.get(j).getCost())+Integer.parseInt(colorInfo.get(i).getCost());
+                        model.addRow(new Object[]{colorInfo.get(i).getColor(), Integer.toString(cost) });
+                    }
+                }
+            } 
         }
         catch (IOException e){
         }
+        
+        
+        
     }
     /**
      * @param args the command line arguments
