@@ -544,11 +544,11 @@ public class SuccessEstimate extends javax.swing.JFrame {
 
             },
             new String [] {
-                "주문서 번호", "업체명"
+                "주문서 번호", "업체명", "제시가"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -701,7 +701,7 @@ public class SuccessEstimate extends javax.swing.JFrame {
                 if (id.equals(estimateInfo.get(i).getId())) {
                     for (int j = 0; j < replyInfo.size(); j++) {
                         if(estimateInfo.get(i).getNum().equals(replyInfo.get(j).getNum()) && "Y".equals(replyInfo.get(j).getSelect())){
-                        model.addRow(new Object[]{estimateInfo.get(i).getNum(), replyInfo.get(j).getId()});
+                        model.addRow(new Object[]{estimateInfo.get(i).getNum(), replyInfo.get(j).getId(), replyInfo.get(j).getPrice()});
                         }
                     }
                 }
@@ -741,6 +741,7 @@ public class SuccessEstimate extends javax.swing.JFrame {
         ArrayList<HousingTypeInfo> housingTypeInfo = new ArrayList<>();
         ArrayList<TileInfo> tileInfo = new ArrayList<>();
         ArrayList<PaintInfo> paintInfo = new ArrayList<>();
+        
         try {
             //주거 유형
             FileMgmt fileMgmt = new FileMgmt();
