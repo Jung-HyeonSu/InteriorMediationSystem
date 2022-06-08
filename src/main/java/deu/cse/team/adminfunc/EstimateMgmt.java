@@ -344,6 +344,7 @@ public class EstimateMgmt extends javax.swing.JFrame {
         catch (IOException ex) {
            Logger.getLogger(EstimateMgmt.class.getName()).log(Level.SEVERE, null, ex);
         }
+        loadEstimateData();
         jDialog1.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
