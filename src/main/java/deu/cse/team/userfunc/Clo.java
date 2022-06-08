@@ -28,7 +28,7 @@ public class Clo extends JFrame implements Runnable{
 		add(label);
 		setBounds(100,100,400,100);
 		setVisible(true);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);    
 	}
 	public static void main(String[] args) {
 		JFrame.setDefaultLookAndFeelDecorated(true);
