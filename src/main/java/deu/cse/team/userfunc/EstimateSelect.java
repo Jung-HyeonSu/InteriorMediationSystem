@@ -757,11 +757,11 @@ public class EstimateSelect extends javax.swing.JFrame {
         String tileShape = "선택 안함"; //모양
         String tileDesign = "선택 안함"; //디자인
         String tileAmount = "선택 안함"; //수량
-        String tilePrice = "선택 안함"; // 타일 총 가격
+        String tilePrice = "0"; // 타일 총 가격
 
         String paintType = null; // 유형
         String paintColor = null; // 색상
-        String paintPrice = null; // 페인트
+        String paintPrice = "0"; // 페인트
 
         ArrayList<HousingTypeInfo> housingTypeInfo = new ArrayList<>();
         ArrayList<TileInfo> tileInfo = new ArrayList<>();

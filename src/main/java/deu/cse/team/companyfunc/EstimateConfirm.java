@@ -739,19 +739,23 @@ public class EstimateConfirm extends javax.swing.JFrame {
             replyInfo = fileMgmt2.returnReplyInfo();
 
             for (int i = 0; i < estimateInfo.size(); i++) {
-                if (id.equals(estimateInfo.get(i).getId())) {
-
-                    for (int j = 0; j < replyInfo.size(); j++) {
-                        if ("N".equals(estimateInfo.get(i).getPay()) && (estimateInfo.get(i).getNum()).equals(replyInfo.get(j).getNum())) {
-                            model.addRow(new Object[]{estimateInfo.get(i).getNum(), replyInfo.get(j).getId(), replyInfo.get(j).getPrice()});
-                        }
+                String a = "0";
+                for (int j = 0; j < replyInfo.size(); j++) {
+                    if((replyInfo.get(j).getNum()).equals(estimateInfo.get(i).getNum()) && "Y".equals(replyInfo.get(j).getSelect())){
+                        a="1";
+                        break;
                     }
+                    else if ((replyInfo.get(j).getNum()).equals(estimateInfo.get(i).getNum()) && id.equals(replyInfo.get(j).getId())) {
+                            a = "1";
+                    }
+                }
+                if(!"1".equals(a)){
+                model.addRow(new Object[]{estimateInfo.get(i).getId(), estimateInfo.get(i).getNum()});
                 }
             }
         } catch (IOException ex) {
-            Logger.getLogger(EstimateSelect.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EstimateConfirm.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     private void loadEstimateDataDetail() {
@@ -777,7 +781,7 @@ public class EstimateConfirm extends javax.swing.JFrame {
 
         String paintType = null; // 유형
         String paintColor = null; // 색상
-        String paintPrice = null; // 페인트
+        String paintPrice = "0"; // 페인트
 
         ArrayList<HousingTypeInfo> housingTypeInfo = new ArrayList<>();
         ArrayList<TileInfo> tileInfo = new ArrayList<>();
