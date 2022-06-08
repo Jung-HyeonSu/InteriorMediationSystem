@@ -9,6 +9,7 @@ import deu.cse.team.source.ColorInfo;
 import deu.cse.team.source.ConstructionInfo;
 import deu.cse.team.source.EstimateInfo;
 import deu.cse.team.source.FileMgmt;
+import deu.cse.team.source.HousingTypeInfo;
 import deu.cse.team.source.PaintInfo;
 import deu.cse.team.strategy.HousingTypeGui;
 import java.io.IOException;
@@ -392,18 +393,47 @@ public class AddOption extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         
-        //Estimate 삭제
+       //Estimate 삭제
         FileMgmt fileMgmt = new FileMgmt();
         ArrayList<EstimateInfo> estimateInfo = new ArrayList<>();
         fileMgmt.readEstimateFileData("C:\\DB\\EstimateList.txt");
         fileMgmt.splitEstimateFileData();
-        try {
+        try {   
             PrintWriter pw = new PrintWriter("C:\\DB\\EstimateList.txt");
             estimateInfo = fileMgmt.returnEstimateInfo();
             String data;
             for (int i = 0; i < estimateInfo.size(); i++) {
                 if(!num.equals(estimateInfo.get(i).getNum())){
-                data = String.format("%s\t%s", estimateInfo.get(i).getId(), estimateInfo.get(i).getNum());
+                data = String.format("%s\t%s\t%s", estimateInfo.get(i).getId(), estimateInfo.get(i).getNum(), estimateInfo.get(i).getPay());
+                pw.println(data);
+            }
+        }
+        pw.close();
+        } 
+        catch (IOException ex) {
+           Logger.getLogger(AddOption.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        //HousingType 삭제
+        FileMgmt fileMgmt2 = new FileMgmt();
+        ArrayList<HousingTypeInfo> housingTypeInfo = new ArrayList<>();
+        fileMgmt2.readHousingTypeFileData("C:\\DB\\HousingTypeList.txt");
+        fileMgmt2.splitHousingTypeFileData();
+        try {   
+            PrintWriter pw = new PrintWriter("C:\\DB\\HousingTypeList.txt");
+            housingTypeInfo = fileMgmt2.returnHousingTypeInfo();
+            String data;
+            for (int i = 0; i < housingTypeInfo.size(); i++) {
+                if(!num.equals(housingTypeInfo.get(i).getNum())){
+                    data = String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", 
+                            housingTypeInfo.get(i).getNum(), 
+                            housingTypeInfo.get(i).getHousingtype(),
+                            housingTypeInfo.get(i).getCeilingtype(),
+                            housingTypeInfo.get(i).getFloortype(),
+                            housingTypeInfo.get(i).getWalltype(),
+                            housingTypeInfo.get(i).getWindowtype(),
+                            housingTypeInfo.get(i).getHeight(),
+                            housingTypeInfo.get(i).getAflatnumber());
                 pw.println(data);
             }
         }

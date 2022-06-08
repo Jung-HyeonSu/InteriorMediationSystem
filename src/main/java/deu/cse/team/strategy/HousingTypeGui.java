@@ -520,15 +520,16 @@ public class HousingTypeGui extends javax.swing.JFrame {
             String data;
             for (int i = 0; i < estimateInfo.size(); i++) {
                 if(!num.equals(estimateInfo.get(i).getNum())){
-                data = String.format("%s\t%s", estimateInfo.get(i).getId(), estimateInfo.get(i).getNum());
+                data = String.format("%s\t%s\t%s", estimateInfo.get(i).getId(), estimateInfo.get(i).getNum(), estimateInfo.get(i).getPay());
                 pw.println(data);
             }
         }
         pw.close();
         } 
         catch (IOException ex) {
-           Logger.getLogger(Notice.class.getName()).log(Level.SEVERE, null, ex);
-        }   
+           Logger.getLogger(HousingTypeGui.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         
         dispose(); //창 닫기
     }//GEN-LAST:event_jButtonCancelActionPerformed
