@@ -51,6 +51,7 @@ public class PayGui extends javax.swing.JFrame {
     public PayGui() {
         initComponents();
 
+
         remoteControl.setCommand(0, payTypeCash, payTypeCheckCard, payTypeCreditCard);
         remoteControl.setCommand(1, payConfirmOkCommnad, payConfirmCancelCommnad);
     }
@@ -67,7 +68,9 @@ public class PayGui extends javax.swing.JFrame {
         this.addO = addO;
         this.addC = addC;
         this.total = total;
-
+        
+        setLocationRelativeTo(this);
+        
         renew();
     }
 
