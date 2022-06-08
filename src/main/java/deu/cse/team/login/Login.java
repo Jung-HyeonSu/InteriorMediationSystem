@@ -178,7 +178,7 @@ public class Login extends javax.swing.JFrame {
         } else {
             for (int i = 0; i < userInfo.size(); i++) {
                 if (userInfo.get(i).getId().equals(id) && userInfo.get(i).getPw().equals(pw)) {
-                    JOptionPane.showMessageDialog(null, userInfo.get(i).getType()+"님 로그인하셨습니다.");
+                    JOptionPane.showMessageDialog(null, userInfo.get(i).getId()+"님 로그인하셨습니다.");
                     if(userInfo.get(i).getType().equals("user")){
                         try {
                             fileMgmt.writeFileData("C:\\DB\\Log.txt", id+"\t"+time);

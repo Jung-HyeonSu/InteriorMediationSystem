@@ -488,19 +488,17 @@ public class PayGui extends javax.swing.JFrame {
             } else if (jRadioButton4.isSelected()) {
                 payType = remoteControl.C_ButtonWasPushed(0);
             }
-            
+
             //지불 방식 저장
             String str = String.format("%s\t%s", num, payType);
             ArrayList<PayTypeInfo> paytypeInfo = new ArrayList<>();
             FileMgmt filemgmt3 = new FileMgmt();
-            try{
+            try {
                 filemgmt3.writeFileData("C:\\DB\\PayTypeList.txt", str);
-            }
-            catch(IOException ex){
+            } catch (IOException ex) {
                 Logger.getLogger(PayGui.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            
+
             //견적서에 결제 여부 체크
             FileMgmt fileMgmt = new FileMgmt();
             ArrayList<EstimateInfo> estimateInfo = new ArrayList<>();
@@ -514,17 +512,16 @@ public class PayGui extends javax.swing.JFrame {
                     if (estimateInfo.get(i).getNum().equals(num)) {
                         data = String.format("%s\t%s\t%s", estimateInfo.get(i).getId(), estimateInfo.get(i).getNum(), "Y");
                         pw.println(data);
-                    }
-                    else{
-                        data = String.format("%s\t%s\t%s", estimateInfo.get(i).getId(), estimateInfo.get(i).getNum(), estimateInfo.get(i).getPay() );
+                    } else {
+                        data = String.format("%s\t%s\t%s", estimateInfo.get(i).getId(), estimateInfo.get(i).getNum(), estimateInfo.get(i).getPay());
                         pw.println(data);
                     }
                 }
-                 pw.close();
+                pw.close();
             } catch (IOException ex) {
                 Logger.getLogger(PayGui.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             //업체가 선정이 딸이에요 Y
             fileMgmt = new FileMgmt();
             ArrayList<ReplyInfo> replyInfo = new ArrayList<>();
@@ -535,11 +532,10 @@ public class PayGui extends javax.swing.JFrame {
                 replyInfo = fileMgmt.returnReplyInfo();
                 String data;
                 for (int i = 0; i < replyInfo.size(); i++) {
-                    if (replyInfo.get(i).getNum().equals(num)) {
+                    if (replyInfo.get(i).getNum().equals(num) && addC.equals(replyInfo.get(i).getPrice())) {
                         data = String.format("%s\t%s\t%s\t%s", replyInfo.get(i).getId(), replyInfo.get(i).getNum(), replyInfo.get(i).getPrice(), "Y");
                         pw.println(data);
-                    }
-                    else{
+                    } else {
                         data = String.format("%s\t%s\t%s\t%s", replyInfo.get(i).getId(), replyInfo.get(i).getNum(), replyInfo.get(i).getPrice(), replyInfo.get(i).getSelect());
                         pw.println(data);
                     }
@@ -549,9 +545,9 @@ public class PayGui extends javax.swing.JFrame {
                 Logger.getLogger(PayGui.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
-        showMessageDialog(null,"결제 완료");
-        
+
+        showMessageDialog(null, "결제 완료");
+
         dispose();
 
     }//GEN-LAST:event_jButton4ActionPerformed

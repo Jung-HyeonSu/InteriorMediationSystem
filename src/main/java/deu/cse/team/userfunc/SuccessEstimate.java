@@ -699,10 +699,9 @@ public class SuccessEstimate extends javax.swing.JFrame {
 
             for (int i = 0; i < estimateInfo.size(); i++) {
                 if (id.equals(estimateInfo.get(i).getId())) {
-
                     for (int j = 0; j < replyInfo.size(); j++) {
-                        if ("Y".equals(estimateInfo.get(i).getPay()) && "Y".equals(replyInfo.get(i).getSelect()) && (estimateInfo.get(i).getNum()).equals(replyInfo.get(j).getNum())) {
-                            model.addRow(new Object[]{estimateInfo.get(i).getNum(), replyInfo.get(j).getId()});
+                        if(estimateInfo.get(i).getNum().equals(replyInfo.get(j).getNum()) && "Y".equals(replyInfo.get(j).getSelect())){
+                        model.addRow(new Object[]{estimateInfo.get(i).getNum(), replyInfo.get(j).getId()});
                         }
                     }
                 }
@@ -749,6 +748,8 @@ public class SuccessEstimate extends javax.swing.JFrame {
             fileMgmt.splitHousingTypeFileData();
             housingTypeInfo = fileMgmt.returnHousingTypeInfo();
             for (int i = 0; i < housingTypeInfo.size(); i++) {
+                
+                
                 if (num.equals(housingTypeInfo.get(i).getNum())) { // 주문서 번호와 같은 경우
                     houseType = housingTypeInfo.get(i).getHousingtype(); //주거형태
                     houseTypeHeight = housingTypeInfo.get(i).getHeight(); // 층고
@@ -797,7 +798,7 @@ public class SuccessEstimate extends javax.swing.JFrame {
             }
             paintPrice = Integer.toString(sum);
         } catch (IOException ex) {
-            Logger.getLogger(SuccessEstimate.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EstimateSelect.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         //조회 화면

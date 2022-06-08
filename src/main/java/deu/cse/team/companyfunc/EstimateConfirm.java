@@ -10,6 +10,7 @@ import deu.cse.team.source.HousingTypeInfo;
 import deu.cse.team.source.PaintInfo;
 import deu.cse.team.source.ReplyInfo;
 import deu.cse.team.source.TileInfo;
+import deu.cse.team.userfunc.EstimateSelect;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -722,37 +723,35 @@ public class EstimateConfirm extends javax.swing.JFrame {
     private void loadEstimateData() {
         ArrayList<EstimateInfo> estimateInfo = new ArrayList<>();
         ArrayList<ReplyInfo> replyInfo = new ArrayList<>();
-
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setNumRows(0);
         try {
             FileMgmt fileMgmt = new FileMgmt();
             FileMgmt fileMgmt2 = new FileMgmt();
+
             fileMgmt.readEstimateFileData("C:\\DB\\EstimateList.txt");
             fileMgmt2.readReplyFileData("C:\\DB\\ReplyList.txt");
+
             fileMgmt.splitEstimateFileData();
             fileMgmt2.splitReplyFileData();
+
             estimateInfo = fileMgmt.returnEstimateInfo();
             replyInfo = fileMgmt2.returnReplyInfo();
 
             for (int i = 0; i < estimateInfo.size(); i++) {
-                String a = "0";
-                for (int j = 0; j < replyInfo.size(); j++) {
-                    if((replyInfo.get(j).getNum()).equals(estimateInfo.get(i).getNum()) && "Y".equals(replyInfo.get(j).getSelect())){
-                        a="1";
-                        break;
+                if (id.equals(estimateInfo.get(i).getId())) {
+
+                    for (int j = 0; j < replyInfo.size(); j++) {
+                        if ("N".equals(estimateInfo.get(i).getPay()) && (estimateInfo.get(i).getNum()).equals(replyInfo.get(j).getNum())) {
+                            model.addRow(new Object[]{estimateInfo.get(i).getNum(), replyInfo.get(j).getId(), replyInfo.get(j).getPrice()});
+                        }
                     }
-                    else if ((replyInfo.get(j).getNum()).equals(estimateInfo.get(i).getNum()) && id.equals(replyInfo.get(j).getId())) {
-                            a = "1";
-                    }
-                }
-                if(!"1".equals(a)){
-                model.addRow(new Object[]{estimateInfo.get(i).getId(), estimateInfo.get(i).getNum()});
                 }
             }
         } catch (IOException ex) {
-            Logger.getLogger(EstimateConfirm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EstimateSelect.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 
     private void loadEstimateDataDetail() {
