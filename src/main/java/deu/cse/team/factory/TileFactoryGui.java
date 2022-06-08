@@ -362,7 +362,9 @@ public class TileFactoryGui extends javax.swing.JFrame {
                 Logger.getLogger(TileFactoryGui.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-   
+        
+        showMessageDialog(null, "견적서 작성 완료");
+        
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
