@@ -198,19 +198,19 @@ public class Notice extends javax.swing.JFrame {
             }
 
             if (weatherID.substring(0, 1).equals("2")) {
-                weather = "Thunderstorm";
+                weather = "[천둥]";
             } else if (weatherID.substring(0, 1).equals("3")) {
-                weather = "Drizzle";
+                weather = "[이슬비]";
             } else if (weatherID.substring(0, 1).equals("5")) {
-                weather = "Rain";
+                weather = "[비]";
             } else if (weatherID.substring(0, 1).equals("6")) {
-                weather = "Snow";
+                weather = "[눈]";
             } else if (weatherID.substring(0, 1).equals("7")) {
-                weather = "Atmosphere";
+                weather = "[대기]";
             } else if (weatherID.substring(0, 1).equals("8") && weatherID.substring(2, 3).equals("0")) {
-                weather = "Clear";
+                weather = "[맑음]";
             } else if (weatherID.substring(0, 1).equals("8") && !weatherID.substring(2, 3).equals("0")) {
-                weather = "Cloud";
+                weather = "[구름]";
             }
             String notice = "오늘의 날씨는 " + weather + "입니다. " + jTextArea1.getText();
             WeatherData weatherData = new WeatherData();
