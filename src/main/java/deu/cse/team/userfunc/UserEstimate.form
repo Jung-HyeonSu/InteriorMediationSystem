@@ -771,7 +771,7 @@
                   <Table columnCount="3" rowCount="0">
                     <Column editable="false" title="&#xc8fc;&#xbb38;&#xc11c; &#xbc88;&#xd638;" type="java.lang.Object"/>
                     <Column editable="false" title="&#xc5c5;&#xccb4;&#xba85;" type="java.lang.Object"/>
-                    <Column editable="true" title="&#xc81c;&#xc2dc;&#xac00;" type="java.lang.Object"/>
+                    <Column editable="true" title="&#xcd94;&#xac00; &#xacac;&#xc801;&#xac00;" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

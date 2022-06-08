@@ -544,7 +544,7 @@ public class UserEstimate extends javax.swing.JFrame {
 
             },
             new String [] {
-                "주문서 번호", "업체명", "제시가"
+                "주문서 번호", "업체명", "추가 견적가"
             }
         ) {
             boolean[] canEdit = new boolean [] {
