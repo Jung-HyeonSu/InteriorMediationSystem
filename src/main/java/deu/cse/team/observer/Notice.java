@@ -65,6 +65,7 @@ public class Notice extends javax.swing.JFrame {
         jLabel2.setText("공지사항 입력:");
 
         jTextArea1.setColumns(20);
+        jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 

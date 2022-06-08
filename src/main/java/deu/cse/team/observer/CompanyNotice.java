@@ -46,6 +46,7 @@ public class CompanyNotice extends javax.swing.JFrame {
         jLabel1.setText("공지사항");
 
         jTextArea1.setColumns(20);
+        jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
         jTextArea1.setFocusable(false);
         jScrollPane1.setViewportView(jTextArea1);
