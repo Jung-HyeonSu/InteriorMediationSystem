@@ -245,7 +245,7 @@ public class FileMgmt implements FileInterface {
         for (int i = 0; i < readColorInfo.size(); i++) {
             line = readColorInfo.get(i);
             String[] str = line.split("\t");
-            colorInfo.add(new ColorInfo(str[0],str[1]));
+            colorInfo.add(new ColorInfo(str[0],str[1],str[2]));
         }
     }
     public void splitHousingTypeFileData() {

@@ -9,12 +9,22 @@ package deu.cse.team.source;
  * @author PC
  */
 public class ColorInfo {
+    String type;
     String color;
     String cost;
     
-    public ColorInfo(String color, String cost){
+    public ColorInfo(String type, String color, String cost){
+        this.type = type;
         this.color = color;
         this.cost = cost;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getColor() {
