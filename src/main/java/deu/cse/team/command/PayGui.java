@@ -10,6 +10,7 @@ import deu.cse.team.mainmenu.UserMainMenu;
 import deu.cse.team.source.EstimateInfo;
 import deu.cse.team.source.FileMgmt;
 import deu.cse.team.source.HousingTypeInfo;
+import deu.cse.team.source.PayTypeInfo;
 import deu.cse.team.source.TileInfo;
 import deu.cse.team.strategy.HousingTypeGui;
 import java.io.IOException;
@@ -20,7 +21,6 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
 
-
 /**
  *
  * @author PC
@@ -28,15 +28,14 @@ import static javax.swing.JOptionPane.showMessageDialog;
 public class PayGui extends javax.swing.JFrame {
 
     RemoteControl remoteControl = new RemoteControl();
-        
+
     PaymentType paymentType = new PaymentType();
     PaymentConfirm paymentConfirm = new PaymentConfirm();
-        
+
     PayTypeCashCommand payTypeCash = new PayTypeCashCommand(paymentType);
     PayTypeCheckCardCommand payTypeCheckCard = new PayTypeCheckCardCommand(paymentType);
     PayTypeCreditCardCommand payTypeCreditCard = new PayTypeCreditCardCommand(paymentType);
-    
-        
+
     PayConfirmOkCommand payConfirmOkCommnad = new PayConfirmOkCommand(paymentConfirm);
     PayConfirmCancelCommand payConfirmCancelCommnad = new PayConfirmCancelCommand(paymentConfirm);
     /**
@@ -44,21 +43,31 @@ public class PayGui extends javax.swing.JFrame {
      */
     String num;
     String comp;
+    String addO;
+    String addC;
+    String total;
+
     public PayGui() {
         initComponents();
-       
+
         remoteControl.setCommand(0, payTypeCash, payTypeCheckCard, payTypeCreditCard);
         remoteControl.setCommand(1, payConfirmOkCommnad, payConfirmCancelCommnad);
     }
-    
-    public PayGui(String num, String comp) {
+
+    //주문번호, 업체아이디, 추가 옵션, 업체견적가, 총 금액
+    public PayGui(String num, String comp, String addO, String addC, String total) {
         initComponents();
-       
+
         remoteControl.setCommand(0, payTypeCash, payTypeCheckCard, payTypeCreditCard);
         remoteControl.setCommand(1, payConfirmOkCommnad, payConfirmCancelCommnad);
-        
+
         this.num = num;
         this.comp = comp;
+        this.addO = addO;
+        this.addC = addC;
+        this.total = total;
+
+        renew();
     }
 
     /**
@@ -93,6 +102,8 @@ public class PayGui extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         buttonGroup2 = new javax.swing.ButtonGroup();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -101,6 +112,10 @@ public class PayGui extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
 
         buttonGroup2.add(jRadioButton4);
         jRadioButton4.setText("신용카드");
@@ -274,6 +289,10 @@ public class PayGui extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("맑은 고딕", 0, 18)); // NOI18N
@@ -286,13 +305,14 @@ public class PayGui extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("총 금액:");
+        jLabel3.setText("총 금액");
 
-        jLabel2.setText("추가 금액:");
+        jLabel2.setText("추가 금액");
 
-        jLabel5.setText("기본 금액:");
+        jLabel5.setText("업체 견적");
 
-        jLabel6.setText("고유 변호:");
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("주문 번호");
 
         jButton4.setText("결제 확정");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -308,58 +328,99 @@ public class PayGui extends javax.swing.JFrame {
             }
         });
 
+        jTextField1.setColumns(6);
+        jTextField1.setToolTipText("");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jTextField2.setColumns(6);
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
+        jTextField3.setColumns(6);
+
+        jTextField4.setColumns(6);
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(79, 79, 79)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(82, 82, 82)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(82, 82, 82)
+                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGap(24, 24, 24)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jLabel6)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel5))
+                                    .addGap(30, 30, 30)
+                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel3))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton5))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(84, 84, 84))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(240, 240, 240)
+                        .addGap(78, 78, 78)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(185, 185, 185)
-                        .addComponent(jButton4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton5)))
-                .addContainerGap(184, Short.MAX_VALUE))
+                        .addGap(54, 54, 54)
+                        .addComponent(jButton1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(9, 9, 9)
                 .addComponent(jLabel1)
-                .addGap(185, 185, 185)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4)
                     .addComponent(jButton5))
-                .addGap(28, 28, 28))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addGap(19, 19, 19)
-                .addComponent(jLabel2)
-                .addGap(29, 29, 29)
-                .addComponent(jLabel3)
-                .addGap(71, 71, 71))
+                .addContainerGap())
         );
 
         pack();
@@ -405,115 +466,76 @@ public class PayGui extends javax.swing.JFrame {
         CreditCVCField.setEnabled(true);
     }//GEN-LAST:event_jRadioButton4ActionPerformed
 
+    public void renew() {
+        //주문번호, 업체아이디, 추가 옵션, 업체견적가, 총 금액
+        jTextField1.setText(num);
+        jTextField2.setText(addO);
+        jTextField3.setText(addC);
+        jTextField4.setText(total);
+    }
+
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        
+
         String payType = "";
-        
-        if("ok".equals(remoteControl.A_ButtonWasPushed(1))){
-            if(jRadioButton6.isSelected()){
+
+        if ("ok".equals(remoteControl.A_ButtonWasPushed(1))) {
+            if (jRadioButton6.isSelected()) {
                 payType = remoteControl.A_ButtonWasPushed(0);
-            }
-            else if(jRadioButton5.isSelected()){
+            } else if (jRadioButton5.isSelected()) {
                 payType = remoteControl.B_ButtonWasPushed(0);
-            }
-            else if(jRadioButton4.isSelected()){
+            } else if (jRadioButton4.isSelected()) {
                 payType = remoteControl.C_ButtonWasPushed(0);
             }
             
+            //지불 방식 저장
             String str = String.format("%s\t%s", num, payType);
-            ArrayList<TileInfo> paytypeInfo = new ArrayList<>();
-            FileMgmt fileMgmt = new FileMgmt();
-            try {
-                fileMgmt.writeFileData("C:\\DB\\PayTypeList.txt", str);
-            } catch (IOException ex) {
+            ArrayList<PayTypeInfo> paytypeInfo = new ArrayList<>();
+            FileMgmt filemgmt3 = new FileMgmt();
+            try{
+                filemgmt3.writeFileData("C:\\DB\\PayTypeList.txt", str);
+            }
+            catch(IOException ex){
                 Logger.getLogger(PayGui.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            showMessageDialog(null,"결제완료");
+            
+            //견적서에 결제 여부 체크
+            FileMgmt fileMgmt = new FileMgmt();
+            ArrayList<EstimateInfo> estimateInfo = new ArrayList<>();
+            fileMgmt.readEstimateFileData("C:\\DB\\EstimateList.txt");
+            fileMgmt.splitEstimateFileData();
+            try {
+                PrintWriter pw = new PrintWriter("C:\\DB\\EstimateList.txt");
+                estimateInfo = fileMgmt.returnEstimateInfo();
+                String data;
+                for (int i = 0; i < estimateInfo.size(); i++) {
+                    if (estimateInfo.get(i).getNum().equals(num)) {
+                        data = String.format("%s\t%s\t%s", estimateInfo.get(i).getId(), estimateInfo.get(i).getNum(), "Y");
+                        pw.println(data);
+                    }
+                    else{
+                        data = String.format("%s\t%s\t%s", estimateInfo.get(i).getId(), estimateInfo.get(i).getNum(), estimateInfo.get(i).getPay() );
+                        pw.println(data);
+                    }
+                    pw.close();
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(PayGui.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         }
         
-        UserMainMenu userMainMenu = new UserMainMenu();
-        userMainMenu.setVisible(true);     
-        dispose();
         
+        dispose();
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        if("cancel".equals(remoteControl.B_ButtonWasPushed(1))){
-            showMessageDialog(null,"결제 취소하셨습니다.");
+        if ("cancel".equals(remoteControl.B_ButtonWasPushed(1))) {
+            showMessageDialog(null, "결제 취소하셨습니다.");
         }
-        
-        //Estimate 삭제
-        FileMgmt fileMgmt = new FileMgmt();
-        ArrayList<EstimateInfo> estimateInfo = new ArrayList<>();
-        fileMgmt.readEstimateFileData("C:\\DB\\EstimateList.txt");
-        fileMgmt.splitEstimateFileData();
-        try {   
-            PrintWriter pw = new PrintWriter("C:\\DB\\EstimateList.txt");
-            estimateInfo = fileMgmt.returnEstimateInfo();
-            String data;
-            for (int i = 0; i < estimateInfo.size(); i++) {
-                if(!num.equals(estimateInfo.get(i).getNum())){
-                data = String.format("%s\t%s", estimateInfo.get(i).getId(), estimateInfo.get(i).getNum());
-                pw.println(data);
-            }
-        }
-        pw.close();
-        } 
-        catch (IOException ex) {
-           Logger.getLogger(UserMainMenu.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        //HousingType 삭제
-        ArrayList<HousingTypeInfo> housingTypeInfo = new ArrayList<>();
-        fileMgmt.readHousingTypeFileData("C:\\DB\\HousingTypeList.txt");
-        fileMgmt.splitHousingTypeFileData();
-        try {   
-            PrintWriter pw = new PrintWriter("C:\\DB\\HousingTypeList.txt");
-            housingTypeInfo = fileMgmt.returnHousingTypeInfo();
-            String data;
-            for (int i = 0; i < housingTypeInfo.size(); i++) {
-                if(!num.equals(housingTypeInfo.get(i).getNum())){
-                    data = String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", 
-                            housingTypeInfo.get(i).getNum(), 
-                            housingTypeInfo.get(i).getHousingtype(),
-                            housingTypeInfo.get(i).getCeilingtype(),
-                            housingTypeInfo.get(i).getFloortype(),
-                            housingTypeInfo.get(i).getWalltype(),
-                            housingTypeInfo.get(i).getWindowtype(),
-                            housingTypeInfo.get(i).getHeight(),
-                            housingTypeInfo.get(i).getAflatnumber());
-                pw.println(data);
-            }
-        }
-        pw.close();
-        } 
-        catch (IOException ex) {
-           Logger.getLogger(HousingTypeGui.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        //paint 삭제
-        /*ArrayList<EstimateInfo> estimateInfo = new ArrayList<>();
-        fileMgmt.readEstimateFileData("C:\\DB\\EstimateList.txt");
-        fileMgmt.splitEstimateFileData();
-        try {   
-            PrintWriter pw = new PrintWriter("C:\\DB\\EstimateList.txt");
-            estimateInfo = fileMgmt.returnEstimateInfo();
-            String data;
-            for (int i = 0; i < estimateInfo.size(); i++) {
-                if(!num.equals(estimateInfo.get(i).getNum())){
-                data = String.format("%s\t%s", estimateInfo.get(i).getId(), estimateInfo.get(i).getNum());
-                pw.println(data);
-            }
-        }
-        pw.close();
-        } 
-        catch (IOException ex) {
-           Logger.getLogger(Notice.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        */
-        
+
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -524,6 +546,18 @@ public class PayGui extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         jDialog1.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -593,5 +627,11 @@ public class PayGui extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JRadioButton jRadioButton6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

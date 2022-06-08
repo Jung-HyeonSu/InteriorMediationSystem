@@ -670,8 +670,10 @@ public class EstimateSelect extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
-        
-        PayGui payGui = new PayGui(jTextField2.getText(), jTextField1.getText() );
+        int sum = Integer.parseInt(jTextField4.getText()) + Integer.parseInt(jTextField5.getText());
+            
+        //주문번호, 업체아이디, 추가 옵션, 업체견적가, 총 금액
+        PayGui payGui = new PayGui(jTextField2.getText(), jTextField1.getText(), Integer.toString(sum), jTextField6.getText(), jTextField7.getText());
         payGui.setVisible(true);     
        
 
