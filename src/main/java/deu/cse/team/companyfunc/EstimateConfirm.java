@@ -679,7 +679,7 @@ public class EstimateConfirm extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(EstimateConfirm.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        jDialog1.dispose();
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
