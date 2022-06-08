@@ -671,11 +671,11 @@ public class EstimateSelect extends javax.swing.JFrame {
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
         int sum = Integer.parseInt(jTextField4.getText()) + Integer.parseInt(jTextField5.getText());
-            
+
         //주문번호, 업체아이디, 추가 옵션, 업체견적가, 총 금액
         PayGui payGui = new PayGui(jTextField2.getText(), jTextField1.getText(), Integer.toString(sum), jTextField6.getText(), jTextField7.getText());
-        payGui.setVisible(true);     
-       
+        payGui.setVisible(true);
+
 
     }//GEN-LAST:event_jButton9ActionPerformed
 
@@ -722,10 +722,9 @@ public class EstimateSelect extends javax.swing.JFrame {
 
             for (int i = 0; i < estimateInfo.size(); i++) {
                 if (id.equals(estimateInfo.get(i).getId())) {
- 
+
                     for (int j = 0; j < replyInfo.size(); j++) {
-                        if ((estimateInfo.get(i).getNum()).equals(replyInfo.get(j).getNum())) {
-                            
+                        if ("N".equals(estimateInfo.get(i).getPay()) && (estimateInfo.get(i).getNum()).equals(replyInfo.get(j).getNum())) {
                             model.addRow(new Object[]{estimateInfo.get(i).getNum(), replyInfo.get(j).getId(), replyInfo.get(j).getPrice()});
                         }
                     }
@@ -740,10 +739,9 @@ public class EstimateSelect extends javax.swing.JFrame {
     private void loadEstimateDataDetail() {
         int row = jTable1.getSelectedRow(); // 선택된 열
 
-        
         String num = jTable1.getValueAt(row, 0).toString(); // 주문서 번호
         String id = jTable1.getValueAt(row, 1).toString(); // 업체명
-        
+
         String houseType = null; // 주거 유형
         String houseTypeHeight = null; // 층고
         String houseTypeAflatnumber = null; //평수
@@ -808,6 +806,7 @@ public class EstimateSelect extends javax.swing.JFrame {
             fileMgmt3.splitPaintFileData();
             paintInfo = fileMgmt3.returnPaintInfo();
             DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+            model.setNumRows(0);
             int sum = 0;
             for (int i = 0; i < paintInfo.size(); i++) {
                 if (num.equals(paintInfo.get(i).getNum())) {
@@ -831,7 +830,7 @@ public class EstimateSelect extends javax.swing.JFrame {
         jTextField4.setText(tilePrice);
         jTextField5.setText(paintPrice);
         jTextField6.setText(jTable1.getValueAt(row, 2).toString());
-        
+
         int sum = Integer.parseInt(jTextField4.getText()) + Integer.parseInt(jTextField5.getText()) + Integer.parseInt(jTextField6.getText());
         jTextField7.setText(Integer.toString(sum));         //총 가격
 

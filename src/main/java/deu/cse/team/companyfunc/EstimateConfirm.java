@@ -738,7 +738,11 @@ public class EstimateConfirm extends javax.swing.JFrame {
             for (int i = 0; i < estimateInfo.size(); i++) {
                 String a = "0";
                 for (int j = 0; j < replyInfo.size(); j++) {
-                    if ((replyInfo.get(j).getNum()).equals(estimateInfo.get(i).getNum()) && id.equals(replyInfo.get(j).getId())) {
+                    if((replyInfo.get(j).getNum()).equals(estimateInfo.get(i).getNum()) && "Y".equals(replyInfo.get(j).getSelect())){
+                        a="1";
+                        break;
+                    }
+                    else if ((replyInfo.get(j).getNum()).equals(estimateInfo.get(i).getNum()) && id.equals(replyInfo.get(j).getId())) {
                             a = "1";
                     }
                 }
@@ -820,6 +824,7 @@ public class EstimateConfirm extends javax.swing.JFrame {
             fileMgmt3.splitPaintFileData();
             paintInfo = fileMgmt3.returnPaintInfo();
             DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+            model.setNumRows(0);
             int sum = 0;
             for (int i = 0; i < paintInfo.size(); i++) {
                 if (num.equals(paintInfo.get(i).getNum())) {

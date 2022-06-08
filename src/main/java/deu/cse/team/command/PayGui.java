@@ -11,6 +11,7 @@ import deu.cse.team.source.EstimateInfo;
 import deu.cse.team.source.FileMgmt;
 import deu.cse.team.source.HousingTypeInfo;
 import deu.cse.team.source.PayTypeInfo;
+import deu.cse.team.source.ReplyInfo;
 import deu.cse.team.source.TileInfo;
 import deu.cse.team.strategy.HousingTypeGui;
 import java.io.IOException;
@@ -523,9 +524,33 @@ public class PayGui extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(PayGui.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            
+            //업체가 선정이 딸이에요 Y
+            fileMgmt = new FileMgmt();
+            ArrayList<ReplyInfo> replyInfo = new ArrayList<>();
+            fileMgmt.readReplyFileData("C:\\DB\\ReplyList.txt");
+            fileMgmt.splitReplyFileData();
+            try {
+                PrintWriter pw = new PrintWriter("C:\\DB\\ReplyList.txt");
+                replyInfo = fileMgmt.returnReplyInfo();
+                String data;
+                for (int i = 0; i < replyInfo.size(); i++) {
+                    if (replyInfo.get(i).getNum().equals(num)) {
+                        data = String.format("%s\t%s\t%s\t%s", replyInfo.get(i).getId(), replyInfo.get(i).getNum(), replyInfo.get(i).getPrice(), "Y");
+                        pw.println(data);
+                    }
+                    else{
+                        data = String.format("%s\t%s\t%s\t%s", replyInfo.get(i).getId(), replyInfo.get(i).getNum(), replyInfo.get(i).getPrice(), replyInfo.get(i).getSelect());
+                        pw.println(data);
+                    }
+                    pw.close();
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(PayGui.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
+        showMessageDialog(null,"결제 완료");
         
         dispose();
 
