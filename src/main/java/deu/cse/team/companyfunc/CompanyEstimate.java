@@ -30,7 +30,7 @@ public class CompanyEstimate extends javax.swing.JFrame {
     /**
      * Creates new form EstimateConfirm
      */
-    String id;
+    String id = "";
 
     public CompanyEstimate() {
         initComponents();
@@ -702,11 +702,12 @@ public class CompanyEstimate extends javax.swing.JFrame {
                 if (id.equals(replyInfo.get(i).getId()) && "Y".equals(replyInfo.get(i).getSelect())) {
                     for (int j = 0; j < estimateInfo.size(); j++) {
                         if ((replyInfo.get(i).getNum()).equals(estimateInfo.get(j).getNum())) {
-                            model.addRow(new Object[]{replyInfo.get(i).getNum(), estimateInfo.get(i).getId(), replyInfo.get(j).getPrice()});
+                            model.addRow(new Object[]{replyInfo.get(i).getNum(), estimateInfo.get(j).getId(), replyInfo.get(i).getPrice()});
                         }
                     }
                 }
             }
+            
         } catch (IOException ex) {
             Logger.getLogger(CompanyEstimate.class.getName()).log(Level.SEVERE, null, ex);
         }
