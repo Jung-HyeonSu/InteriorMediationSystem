@@ -31,9 +31,4 @@ class Floor extends Color {
         cost = Integer.parseInt(money);
       return cost;
   }
-
-  public String ColorValue() {
-      return "floor";
-  }
-
 }

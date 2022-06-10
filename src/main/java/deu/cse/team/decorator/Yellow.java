@@ -37,9 +37,4 @@ class Yellow extends CondimentDecorator {
         cost = Integer.parseInt(money) + color.cost();
       return cost;
   }
-
-  public String ColorValue() {
-      return "Yellow 색상";
-  }
-
 }

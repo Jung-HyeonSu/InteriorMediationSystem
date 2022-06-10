@@ -38,9 +38,4 @@ class Red extends CondimentDecorator {
         cost = Integer.parseInt(money) + color.cost();
       return cost;
   }
-
-  public String ColorValue() {
-      return "Red색상";
-  }
-
 }

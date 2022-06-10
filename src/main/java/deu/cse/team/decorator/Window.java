@@ -31,9 +31,4 @@ class Window extends Color {
         cost = Integer.parseInt(money);
       return cost;
   }
-
-  public String ColorValue() {
-      return "window";
-  }
-
 }
